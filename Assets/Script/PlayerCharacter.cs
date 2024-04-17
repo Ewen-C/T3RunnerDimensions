@@ -8,6 +8,10 @@ public class PlayerCharacter : MonoBehaviour
     
     public int dimensionALayer;
     public int dimensionBLayer;
+
+    [SerializeField] private Material materialDimensionA;
+    [SerializeField] private Material materialDimensionB;
+    
     public enum Dimension { DimensionA, DimensionB }
     public Dimension currentDimension = Dimension.DimensionA;
     
@@ -20,36 +24,19 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
     
-    public void SwitchDimension() 
+    public void SwitchDimension()
     {
-        if (currentDimension == Dimension.DimensionA) 
-        {
-            currentDimension = Dimension.DimensionB;
-            // Logique pour switcher à la Dimension B
-            SwitchToDimensionB();
-        } else 
-        {
-            currentDimension = Dimension.DimensionA;
-            // Logique pour switcher à la Dimension A
-            SwitchToDimensionA();
-        }
-    }
-    
-    // Méthode pour passer à la dimension A
-    public void SwitchToDimensionA()
-    {
-        gameObject.layer = dimensionALayer;  // Change le layer du joueur
+        currentDimension = (currentDimension == Dimension.DimensionA) ? Dimension.DimensionB : Dimension.DimensionA;
+        gameObject.layer = (currentDimension == Dimension.DimensionA) ? dimensionALayer : dimensionBLayer;
+        GetComponent<Renderer>().material = 
+            (currentDimension == Dimension.DimensionA) ? materialDimensionA : materialDimensionB;
+        
+        Debug.Log("Switched to Dimension" + (currentDimension == Dimension.DimensionA ? "A" : " B"));
+        
         // Physics.IgnoreLayerCollision(dimensionALayer, dimensionBLayer, true); // Ignore les collisions avec les obstacles de Dimension B
         // Physics.IgnoreLayerCollision(dimensionBLayer, dimensionALayer, false); // Optionnelle, car elle ne devrait pas être nécessaire
-        Debug.Log("Switched to Dimension A");
-    }
-    
-    // Méthode pour passer à la dimension B
-    public void SwitchToDimensionB()
-    {
-        gameObject.layer = dimensionBLayer;  // Change le layer du joueur
+        
         // Physics.IgnoreLayerCollision(dimensionALayer, dimensionBLayer, false); // Optionnelle, car elle ne devrait pas être nécessaire
         // Physics.IgnoreLayerCollision(dimensionBLayer, dimensionALayer, true); // Ignore les collisions avec les obstacles de Dimension A
-        Debug.Log("Switched to Dimension B");
     }
 }
