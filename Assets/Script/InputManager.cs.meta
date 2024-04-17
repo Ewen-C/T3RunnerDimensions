@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: b13d953c7210cae44aae9bbc0f01a4f6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - debugObjectPrefab: {fileID: 7880093448053933794, guid: 729a5c176457dbc4db3bee09b4ebdbbf,
+      type: 3}
+  - lineRendererPrefab: {fileID: 6089768316653713260, guid: 96363f573c2c3d742810a0a372f2dd3a,
+      type: 3}
+  - pinchObjectPrefab: {fileID: 9072361897327591599, guid: d85c48d1f3f723644b802b1bceb49e17,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
