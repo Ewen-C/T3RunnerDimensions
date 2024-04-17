@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
 {
     private int collisionCount = 0; // Compteur de collisions
+    
+    public Text hitText;
+    public GameObject feedbackPrefab;
+    public float displayTime = 0.2f;
     
     public int dimensionALayer;
     public int dimensionBLayer;
@@ -15,12 +20,19 @@ public class PlayerCharacter : MonoBehaviour
     public enum Dimension { DimensionA, DimensionB }
     public Dimension currentDimension = Dimension.DimensionA;
     
+    void Update()
+    {
+        hitText.text = "Hit : " + collisionCount; // Met à jour le texte affiché
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Obstacle"))
         {
             collisionCount++; // Incrémenter le compteur de collisions
+            GameObject feedbackInstance = Instantiate(feedbackPrefab, transform.position, Quaternion.identity);
             Debug.Log("Collision detected! Total hits: " + collisionCount);
+            Destroy(feedbackInstance, displayTime);
         }
     }
     
