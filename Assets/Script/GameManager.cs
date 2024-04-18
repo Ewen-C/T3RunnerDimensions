@@ -34,42 +34,24 @@ public class GameManager : MonoBehaviour
         }
 
         RemovePreviousGround();
-        CreateAndRegisterPattern();
     }
     
     private void RemovePreviousGround()
     {
         // Si le premier sol est derrière le joueur, détruire le Prefab pattern et en instancier un nouveau
         if (grounds.Count <= 0 || !(grounds[0].position.z < (player.position.z - 30f))) return;
-        Destroy(grounds[0].parent);
+        Destroy(grounds[0].parent.gameObject);
         grounds.RemoveAt(0);
+        CreateAndRegisterPattern();
     }
 
     private void CreateAndRegisterPattern()
     {
         // TODO : Calcul dynamique de la taille des sols à la place de -80
         
-        Vector3 spawnPosition = new Vector3(0, player.position.y, player.position.z) - new Vector3(0, 0.5f, -80f);
-        
+        Vector3 spawnPosition = new Vector3(0, player.position.y, player.position.z) - new Vector3(0, 0.5f, -35f * grounds.Count);
         GameObject newPattern = obstacleSpawner.SpawnPattern(spawnPosition);
         Transform newGroundPosition = newPattern.transform.GetChild(0).transform; // Returns ground transform
         grounds.Add(newGroundPosition);
     }
-
-    /*private void SpawnGround()
-    {
-        // Calculer la position du prochain sol en fonction du dernier sol de la liste
-        Vector3 spawnPosition = player.position - new Vector3(0, 0.5f, -16f);
-        if (grounds.Count > 0)
-        {
-            spawnPosition = grounds[^1].position + Vector3.forward * spaceBetweenGround;
-        }
-        Transform newGround = Instantiate(groundPrefab, spawnPosition, Quaternion.identity);
-        grounds.Add(newGround);
-        
-        patternPositions.Add(newGround); // Tmp
-        
-        // Appeler SpawnObstacle pour générer des obstacles sur le nouveau sol
-        obstacleSpawner.SpawnObstacle(newGround);
-    }*/
 }
