@@ -27,13 +27,12 @@ public class PlayerCharacter : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle"))
-        {
-            collisionCount++; // Incrémenter le compteur de collisions
-            GameObject feedbackInstance = Instantiate(feedbackPrefab, transform.position, Quaternion.identity);
-            Debug.Log("Collision detected! Total hits: " + collisionCount);
-            Destroy(feedbackInstance, displayTime);
-        }
+        if (!other.CompareTag("Obstacle")) return;
+        
+        collisionCount++; // Incrémenter le compteur de collisions
+        GameObject feedbackInstance = Instantiate(feedbackPrefab, transform.position, Quaternion.identity);
+        Debug.Log("Collision detected! Total hits: " + collisionCount);
+        Destroy(feedbackInstance, displayTime);
     }
     
     public void SwitchDimension()
