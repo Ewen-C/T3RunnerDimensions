@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6043aa8b9f65f84eaeb04b01c158432, type: 2}
+  - {fileID: 2100000, guid: b7ea314925401c145b7e1656b8419c91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -172,8 +172,8 @@ MonoBehaviour:
   displayTime: 0.5
   dimensionALayer: 10
   dimensionBLayer: 11
-  materialDimensionA: {fileID: 2100000, guid: 738f118aa214360489366338953cfd32, type: 2}
-  materialDimensionB: {fileID: 2100000, guid: 69c3c648559bfd34eaae3ff327107596, type: 2}
+  materialDimensionA: {fileID: 2100000, guid: b7ea314925401c145b7e1656b8419c91, type: 2}
+  materialDimensionB: {fileID: 2100000, guid: a0760f902e4a98845a884fb8b053ad89, type: 2}
   materialObstaclesA: {fileID: 2100000, guid: a6043aa8b9f65f84eaeb04b01c158432, type: 2}
   materialObstaclesB: {fileID: 2100000, guid: 6999cf1a10290ae489c222b644547b67, type: 2}
   currentDimension: 0

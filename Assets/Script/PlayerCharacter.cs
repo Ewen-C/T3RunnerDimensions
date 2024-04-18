@@ -38,7 +38,8 @@ public class PlayerCharacter : MonoBehaviour
         if (!other.CompareTag("Obstacle")) return;
         
         collisionCount++; // Incrémenter le compteur de collisions
-        GameObject feedbackInstance = Instantiate(feedbackPrefab, transform.position, Quaternion.identity);
+        GameObject feedbackInstance = Instantiate(feedbackPrefab, new Vector3(transform.position.x, 
+            transform.position.y + 1, transform.position.z), Quaternion.identity);
         Debug.Log("Collision detected! Total hits: " + collisionCount);
         Destroy(feedbackInstance, displayTime);
     }
