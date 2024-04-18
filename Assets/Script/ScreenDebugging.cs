@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-public class ScreenDebugging : EditorWindow
+/*public class ScreenDebugging : EditorWindow
 {
     private static EditorWindow window;
     
@@ -25,4 +25,4 @@ public class ScreenDebugging : EditorWindow
         EditorGUILayout.LabelField("Safe Area x min : " + Screen.safeArea.xMin);
         EditorGUILayout.LabelField("Safe Area x max : " + Screen.safeArea.xMax);
     }
-}
+}*/
