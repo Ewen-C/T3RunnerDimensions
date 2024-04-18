@@ -35,13 +35,12 @@ public class PlayerCharacter : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle"))
-        {
-            collisionCount++; // Incrémenter le compteur de collisions
-            GameObject feedbackInstance = Instantiate(feedbackPrefab, transform.position, Quaternion.identity);
-            Debug.Log("Collision detected! Total hits: " + collisionCount);
-            Destroy(feedbackInstance, displayTime);
-        }
+        if (!other.CompareTag("Obstacle")) return;
+        
+        collisionCount++; // Incrémenter le compteur de collisions
+        GameObject feedbackInstance = Instantiate(feedbackPrefab, transform.position, Quaternion.identity);
+        Debug.Log("Collision detected! Total hits: " + collisionCount);
+        Destroy(feedbackInstance, displayTime);
     }
     
     public void SwitchDimension()
@@ -54,12 +53,6 @@ public class PlayerCharacter : MonoBehaviour
         UpdateMaterialTransparency();
         
         Debug.Log("Switched to Dimension" + (currentDimension == Dimension.DimensionA ? "A" : " B"));
-        
-        // Physics.IgnoreLayerCollision(dimensionALayer, dimensionBLayer, true); // Ignore les collisions avec les obstacles de Dimension B
-        // Physics.IgnoreLayerCollision(dimensionBLayer, dimensionALayer, false); // Optionnelle, car elle ne devrait pas être nécessaire
-        
-        // Physics.IgnoreLayerCollision(dimensionALayer, dimensionBLayer, false); // Optionnelle, car elle ne devrait pas être nécessaire
-        // Physics.IgnoreLayerCollision(dimensionBLayer, dimensionALayer, true); // Ignore les collisions avec les obstacles de Dimension A
     }
     
     private void UpdateMaterialTransparency()
