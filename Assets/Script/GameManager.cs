@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         // TODO : Calcul dynamique de la taille des sols à la place de -80
         
-        Vector3 spawnPosition = new Vector3(0, player.position.y, player.position.z) - new Vector3(0, 0.5f, -35f * grounds.Count);
+        Vector3 spawnPosition = new Vector3(0, player.position.y, player.position.z) - new Vector3(0, 0.15f, -35f * grounds.Count);
         GameObject newPattern = obstacleSpawner.SpawnPattern(spawnPosition);
         Transform newGroundPosition = newPattern.transform.GetChild(0).transform; // Returns ground transform
         grounds.Add(newGroundPosition);
