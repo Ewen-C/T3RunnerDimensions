@@ -898,6 +898,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7695392482120996097, guid: a13055eb8cc5d5b459628f1bfb5f302b,
         type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695392482120996097, guid: a13055eb8cc5d5b459628f1bfb5f302b,
+        type: 3}
       propertyPath: smoothTime
       value: 0.9
       objectReference: {fileID: 0}

@@ -52,7 +52,7 @@ public class InputManager : MonoBehaviour
         if (moveDirection != 0f)
         {
             // Calculez la nouvelle position x cible
-            Vector3 targetPosition = rb.position + new Vector3(moveDirection, 0, 0) * moveSpeed * Time.deltaTime;
+            Vector3 targetPosition = rb.position + new Vector3(moveDirection, 0, 0) * (moveSpeed * Time.deltaTime);
 
             // Maintenez la position y et z inchangées
             targetPosition.y = rb.position.y;
@@ -66,6 +66,7 @@ public class InputManager : MonoBehaviour
         }
     }
     
+    // ReSharper disable Unity.PerformanceAnalysis
     public void HandleFingerTap(LeanFinger finger)
     {
         // Assurez-vous que le toucher est dans la partie inférieure de l'écran
