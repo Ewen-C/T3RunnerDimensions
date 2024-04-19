@@ -37,17 +37,27 @@ public class InputManager : MonoBehaviour
 
     public void HandleFingerDown(LeanFinger finger)
     {
-        // Convertir la position de l'écran en position dans le monde
-        Vector3 fingerPosition = Camera.main.ScreenToWorldPoint(new Vector3(finger.ScreenPosition.x, finger.ScreenPosition.y, Camera.main.transform.position.z - rb.transform.position.z));
-
-        // Déterminez si le toucher est à gauche ou à droite du personnage
-        moveDirection = -fingerPosition.x > rb.position.x ? 1f : -1f;
+        if (finger.ScreenPosition.y < Screen.height / 4 && finger.ScreenPosition.x < Screen.width / 3)
+        {
+            moveDirection = -1f;
+        } else if (finger.ScreenPosition.y < Screen.height / 4 && finger.ScreenPosition.x > (Screen.width / 3) * 2)
+        {
+            moveDirection = 1f;
+        }
+        
+        // // Convertir la position de l'écran en position dans le monde
+        // Vector3 fingerPosition = Camera.main.ScreenToWorldPoint(new Vector3(finger.ScreenPosition.x, finger.ScreenPosition.y, Camera.main.transform.position.z - rb.transform.position.z));
+        //
+        // // Déterminez si le toucher est à gauche ou à droite du personnage
+        // moveDirection = -fingerPosition.x > rb.position.x ? 1f : -1f;
     }
 
     public void HandleFingerUp(LeanFinger finger)
     {
         // Arrêter le mouvement lorsque le doigt est relevé
         moveDirection = 0f;
+        // Diminue la vitesse progressivement jusqu'à 0
+        //currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime);
     }
 
     public void HandleFingerUpdate(LeanFinger finger)
@@ -75,9 +85,13 @@ public class InputManager : MonoBehaviour
     
     public void HandleFingerTap(LeanFinger finger)
     { 
-        // Double Tap
-        if (finger.TapCount == 2) { if (player != null) 
-               { player.GetComponent<PlayerCharacter>().SwitchDimension(); }
+        if (finger.ScreenPosition.y < Screen.height / 4 && finger.ScreenPosition.x > (Screen.width / 3) && 
+            finger.ScreenPosition.x < (Screen.width / 3) * 2)
+        {
+            // Double Tap
+            if (finger.TapCount == 2) { if (player != null) 
+                { player.GetComponent<PlayerCharacter>().SwitchDimension(); }
+            }
         }
     }
 }
