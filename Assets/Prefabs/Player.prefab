@@ -149,9 +149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7695392482120996106}
   rb: {fileID: 7695392482120996096}
-  moveSpeed: 3
+  moveSpeed: 5
   minX: -2
   maxX: 2
+  acceleration: 10
+  deceleration: 10
 --- !u!114 &8315557127008029541
 MonoBehaviour:
   m_ObjectHideFlags: 0
