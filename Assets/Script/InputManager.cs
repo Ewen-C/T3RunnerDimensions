@@ -37,15 +37,11 @@ public class InputManager : MonoBehaviour
 
     public void HandleFingerDown(LeanFinger finger)
     {
-        // Assurez-vous que le toucher est dans la partie inférieure de l'écran
-        if (finger.ScreenPosition.y < Screen.height / 4)
-        {
-            // Convertir la position de l'écran en position dans le monde
-            Vector3 fingerPosition = Camera.main.ScreenToWorldPoint(new Vector3(finger.ScreenPosition.x, finger.ScreenPosition.y, Camera.main.transform.position.z - rb.transform.position.z));
+        // Convertir la position de l'écran en position dans le monde
+        Vector3 fingerPosition = Camera.main.ScreenToWorldPoint(new Vector3(finger.ScreenPosition.x, finger.ScreenPosition.y, Camera.main.transform.position.z - rb.transform.position.z));
 
-            // Déterminez si le toucher est à gauche ou à droite du personnage
-            moveDirection = -fingerPosition.x > rb.position.x ? 1f : -1f;
-        }
+        // Déterminez si le toucher est à gauche ou à droite du personnage
+        moveDirection = -fingerPosition.x > rb.position.x ? 1f : -1f;
     }
 
     public void HandleFingerUp(LeanFinger finger)
@@ -78,18 +74,10 @@ public class InputManager : MonoBehaviour
     }
     
     public void HandleFingerTap(LeanFinger finger)
-    {
-        // Assurez-vous que le toucher est dans la partie suppèrieur de l'écran
-        if (finger.ScreenPosition.y > Screen.height / 4)
-        {
-            // Double Tap
-            if (finger.TapCount == 2)
-            {
-                if (player != null) 
-                {
-                    player.GetComponent<PlayerCharacter>().SwitchDimension();
-                }
-            }
+    { 
+        // Double Tap
+        if (finger.TapCount == 2) { if (player != null) 
+               { player.GetComponent<PlayerCharacter>().SwitchDimension(); }
         }
     }
 }

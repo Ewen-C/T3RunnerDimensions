@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f07a53d9660e7040932c154d7231da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundMoveSpeed: 10
+  groundMoveSpeed: 7
   maxGrounds: 6
   spaceBetweenGround: 20
   obstacleSpawner: {fileID: 0}
@@ -899,7 +899,7 @@ PrefabInstance:
     - target: {fileID: 7695392482120996097, guid: a13055eb8cc5d5b459628f1bfb5f302b,
         type: 3}
       propertyPath: moveSpeed
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7695392482120996097, guid: a13055eb8cc5d5b459628f1bfb5f302b,
         type: 3}
