@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public float groundMoveSpeed = 10f; // La vitesse de défilement du sol
-    public int maxGrounds = 7; // Nombre de sols à maintenir à l'écran
-    public float spaceBetweenGround = 20f; // Espacement entre les sols
+    public float groundMoveSpeed = 10f; // La vitesse de défilement des patterns
+    public int maxGrounds = 7; // Nombre de pattern à maintenir à l'écran
 
     [SerializeField] private ObstacleSpawner obstacleSpawner;
 
     private Transform player; // La référence au joueur
-    private List<GameObject> patterns = new(); // Liste des sols actuellement affichés
+    private List<GameObject> patterns = new(); // Liste des patterns actuellement affichés
 
     private void Start()
     {
