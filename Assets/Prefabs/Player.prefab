@@ -152,6 +152,7 @@ MonoBehaviour:
   smoothTime: 0.2
   minX: -1.7
   maxX: 1.7
+  maxLeanAngle: 40
   player: {fileID: 7695392482120996106}
   inputManager: {fileID: 0}
 --- !u!114 &8315557127008029541

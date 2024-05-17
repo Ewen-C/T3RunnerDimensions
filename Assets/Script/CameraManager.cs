@@ -1,26 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public Transform playerTransform; // Référence au transform du joueur
-    public float smoothSpeed = 0.125f; // Vitesse de suivi de la caméra
-    public float minX, maxX; // Limites horizontales de déplacement de la caméra
-    
-    void LateUpdate()
+    public PlayerController playerController; // Référence au script PlayerController
+    public float shiftAmount = 0.5f; // Quantité de décalage latéral de la caméra
+    public float shiftSpeed = 2f; // Vitesse de décalage de la caméra
+
+    private Vector3 originalPosition;
+    private float targetXPosition;
+
+    void Start()
     {
-        // Obtenir la position actuelle de la caméra
-        Vector3 currentPosition = transform.position;
+        originalPosition = transform.position; // Sauvegarde la position originale de la caméra
+    }
 
-        if (playerTransform.position.x > minX && playerTransform.position.x < maxX)
+    void Update()
+    {
+        if (playerController != null)
         {
-            // Calculer la nouvelle position cible de la caméra centrée sur le joueur
-            Vector3 targetPosition = new Vector3(playerTransform.position.x, currentPosition.y, currentPosition.z);
-
-            // Déplacer la caméra de manière fluide vers la nouvelle position cible
-            Vector3 smoothedPosition = Vector3.Lerp(currentPosition, targetPosition, smoothSpeed * Time.deltaTime);
-            transform.position = smoothedPosition;
+            // Calcule la position cible de la caméra basée sur la direction du mouvement du joueur
+            targetXPosition = originalPosition.x + (playerController.GetCurrentSpeed() / playerController.maxSpeed) * shiftAmount;
+            
+            // Lisse le mouvement de la caméra vers la position cible
+            Vector3 currentPosition = transform.position;
+            currentPosition.x = Mathf.Lerp(currentPosition.x, targetXPosition, Time.deltaTime * shiftSpeed);
+            transform.position = currentPosition;
         }
+    }
+
+    public void ResetCameraPosition()
+    {
+        // Appelé pour réinitialiser la position de la caméra, si nécessaire
+        transform.position = originalPosition;
     }
 }
