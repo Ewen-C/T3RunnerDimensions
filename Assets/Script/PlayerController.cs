@@ -6,18 +6,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float acceleration = 0.1f; // Accélération ajoutée à chaque frame lors du mouvement
+    public float maxSpeed = 5f; // Vitesse maximale
+    public float smoothTime = 0.3f; // Temps pour atteindre la vitesse maximale
     public float minX = -5f;  // Limite minimale sur l'axe x
     public float maxX = 5f;   // Limite maximale sur l'axe x
-    public float acceleration = 10f; // Vitesse d'accélération 
-    public float deceleration = 10f; // Vitesse de décélération
     
     [SerializeField] private GameObject player;
     [SerializeField] private InputManager inputManager;
 
     private Rigidbody rb;
-    private float currentSpeed;
-    private float moveDirection;
+    private float currentSpeed = 0f; // Vitesse actuelle du personnage
+    private float targetSpeed = 0f; // Vitesse cible basée sur l'entrée du joueur
+    private float velocityX = 0f; // Utilisé pour le smoothing de la vitesse
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
     
     private void HandleMoveDirectionChanged(float direction)
     {
-        moveDirection = direction;
+        targetSpeed  = direction * maxSpeed;
     }
     
     private void HandleDoubleTap()
@@ -39,18 +40,19 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
-        if (moveDirection != 0f)
+        if (targetSpeed != 0f)
         {
-            currentSpeed = Mathf.MoveTowards(currentSpeed, moveSpeed * moveDirection, acceleration * Time.deltaTime);
+            // Smoothly transition the current speed towards the target speed
+            currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref velocityX, smoothTime);
         }
         else
         {
-            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime);
+            // Gradually slow down if no input is detected
+            currentSpeed = Mathf.Lerp(currentSpeed, 0, Time.deltaTime * acceleration);
         }
-
-        float targetX = Mathf.Lerp(rb.position.x, rb.position.x + currentSpeed * Time.deltaTime, 0.5f);
-        targetX = Mathf.Clamp(targetX, minX, maxX);
-        Vector3 targetPosition = new Vector3(targetX, rb.position.y, rb.position.z);
+        
+        Vector3 targetPosition = rb.position + new Vector3(currentSpeed, 0, 0) * Time.deltaTime;
+        targetPosition.x = Mathf.Clamp(targetPosition.x, minX, maxX);
         rb.MovePosition(targetPosition);
     }
     

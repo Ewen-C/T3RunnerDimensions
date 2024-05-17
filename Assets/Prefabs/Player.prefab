@@ -147,11 +147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fa9af6644ee054b8bf2443037f3616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  minX: -2
-  maxX: 2
-  acceleration: 10
-  deceleration: 10
+  acceleration: 4
+  maxSpeed: 6
+  smoothTime: 0.2
+  minX: -1.7
+  maxX: 1.7
   player: {fileID: 7695392482120996106}
   inputManager: {fileID: 0}
 --- !u!114 &8315557127008029541
