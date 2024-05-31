@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    private int collisionCount = 0; // Compteur de collisions
+    private int collisionCount; // Compteur de collisions
     
     public Text hitText;
     public GameObject feedbackPrefab;
@@ -24,7 +22,7 @@ public class PlayerCharacter : MonoBehaviour
     
     void Start()
     {
-        // Initialisation pour s'assurer que l'état initial est correct
+        // Initialisation pour s assurer que l état initial est correct
         UpdateMaterialTransparency();
     }
     
@@ -38,8 +36,9 @@ public class PlayerCharacter : MonoBehaviour
         if (!other.CompareTag("Obstacle")) return;
         
         collisionCount++; // Incrémenter le compteur de collisions
-        GameObject feedbackInstance = Instantiate(feedbackPrefab, new Vector3(transform.position.x, 
-            transform.position.y + 1, transform.position.z), Quaternion.identity);
+        var position = transform.position;
+        GameObject feedbackInstance = Instantiate(feedbackPrefab, new Vector3(position.x, 
+            position.y + 1, position.z), Quaternion.identity);
         Debug.Log("Collision detected! Total hits: " + collisionCount);
         Destroy(feedbackInstance, displayTime);
     }

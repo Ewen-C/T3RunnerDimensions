@@ -1,16 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public float groundMoveSpeed = 10f; // La vitesse de défilement des patterns
-    public int maxGrounds = 7; // Nombre de pattern à maintenir à l'écran
+    public int maxGrounds = 7; // Nombre de pattern à maintenir à l écran
 
     [SerializeField] private ObstacleSpawner obstacleSpawner;
 
     private Transform player; // La référence au joueur
-    private List<GameObject> patterns = new(); // Liste des patterns actuellement affichés
+    private readonly List<GameObject> patterns = new(); // Liste des patterns actuellement affichés
 
     private void Start()
     {
@@ -57,6 +56,7 @@ public class GameManager : MonoBehaviour
     private Vector3 GetSpawnPosition()
     {
         // TODO : Calcul dynamique de la position des sols à la place de -35
-        return new Vector3(0, player.position.y, player.position.z) - new Vector3(0, 0.15f, -35f * patterns.Count);
+        var position = player.position;
+        return new Vector3(0, position.y, position.z) - new Vector3(0, 0.15f, -35f * patterns.Count);
     }
 }

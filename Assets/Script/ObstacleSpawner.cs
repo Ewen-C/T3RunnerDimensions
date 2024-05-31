@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public Transform obstaclePrefabA; // Le prefab de l'obstacle A
-    public Transform obstaclePrefabB; // Le prefab de l'obstacle B
+    public Transform obstaclePrefabA; // Le prefab de l obstacle A
+    public Transform obstaclePrefabB; // Le prefab de l obstacle B
     
     public GameObject SpawnPatternStart(Vector3 patternPosition)
     {

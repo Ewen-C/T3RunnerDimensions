@@ -1,6 +1,5 @@
 using UnityEngine;
 using Lean.Touch;
-using UnityEditor;
 
 public class InputManager : MonoBehaviour
 {
@@ -27,12 +26,12 @@ public class InputManager : MonoBehaviour
         LeanTouch.OnFingerTap -= HandleFingerTap;
     }
 
-    public void HandleFingerDown(LeanFinger finger)
+    private void HandleFingerDown(LeanFinger finger)
     {
-        if (finger.ScreenPosition.y < Screen.height / 4 && finger.ScreenPosition.x < Screen.width / 3)
+        if (finger.ScreenPosition.y < Screen.height / 4.0f && finger.ScreenPosition.x < Screen.width / 3.0f)
         {
             moveDirection = -1f;
-        } else if (finger.ScreenPosition.y < Screen.height / 4 && finger.ScreenPosition.x > (Screen.width / 3) * 2)
+        } else if (finger.ScreenPosition.y < Screen.height / 4.0f && finger.ScreenPosition.x > (Screen.width / 3.0f) * 2)
         {
             moveDirection = 1f;
         }
@@ -40,16 +39,16 @@ public class InputManager : MonoBehaviour
         OnMoveDirectionChanged?.Invoke(moveDirection);
     }
 
-    public void HandleFingerUp(LeanFinger finger)
+    private void HandleFingerUp(LeanFinger finger)
     {
         moveDirection = 0f;
         OnMoveDirectionChanged?.Invoke(moveDirection);
     }
-    
-    public void HandleFingerTap(LeanFinger finger)
+
+    private void HandleFingerTap(LeanFinger finger)
     { 
-        if (finger.ScreenPosition.y < Screen.height / 4 && finger.ScreenPosition.x > (Screen.width / 3) && 
-            finger.ScreenPosition.x < (Screen.width / 3) * 2)
+        if (finger.ScreenPosition.y < Screen.height / 4.0f && finger.ScreenPosition.x > (Screen.width / 3.0f) && 
+            finger.ScreenPosition.x < (Screen.width / 3.0f) * 2)
         {
             if (finger.TapCount == 2)
             {
