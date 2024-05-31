@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     private float currentSpeed = 0f; // Vitesse actuelle du personnage
     private float targetSpeed = 0f; // Vitesse cible basée sur l'entrée du joueur
     private float velocityX = 0f; // Utilisé pour le smoothing de la vitesse
+
+
+    [SerializeField] private AnimationCurve curve;
+    
     
     public float GetCurrentSpeed()
     {
@@ -71,12 +75,17 @@ public class PlayerController : MonoBehaviour
         Vector3 position = rb.transform.position;
         position.x = Mathf.Clamp(position.x, minX, maxX);
         rb.transform.position = position;
-
-        // Application de la rotation pour le penchement
-        float lean = (currentSpeed / maxSpeed) * maxLeanAngle;
-        rb.transform.rotation = Quaternion.Euler(0, 0, -lean);
+        
+        LeanController();
     }
     
+    private void LeanController()       // Application de la rotation pour le penchement
+    {
+        // float lean = (currentSpeed / maxSpeed) * maxLeanAngle;
+        float lean = curve.Evaluate(currentSpeed / maxSpeed) * maxLeanAngle;
+        rb.transform.rotation = Quaternion.Euler(0, 0, -lean);
+    }
+
     private void OnDestroy()
     {
         if (inputManager != null)
