@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Runner;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -40,14 +39,14 @@ public class ActivitySequenceGenerator : MonoBehaviour
             {
                 weightedActivity.DecreaseCooldown();
             }
+            
+            ApplyRepetitionConstraints();
         }
     }
 
     // Gets randomly the activity using the weighted ratio - any weight values may be used
     private WeightedActivity GetRdWeightedActivity(float progression)
     {
-        ApplyRepetitionConstraints();
-        
         float totalWeights = possibleActivities.Sum(x => x.GetWeightAtTime(progression));
         float rd = Random.value * totalWeights;
 
@@ -62,12 +61,16 @@ public class ActivitySequenceGenerator : MonoBehaviour
         return possibleActivities.Last();
     }
 
+    // Tries to apply forced cooldown after pattern generation
     private void ApplyRepetitionConstraints()
     {
         foreach (ActivityRepetitionConstraint repConstraint in repetitionConstraints)
         {
-            possibleActivities.First(x => x.ActPublic == repConstraint.ActPublic)
-                .SetCustomCooldown(repConstraint.ForcedCooldown);
+            if (!repConstraint.IsConstraintActivityAllowed(activitySequence))
+            {
+                possibleActivities.First(x => x.ActPublic == repConstraint.ActPublic)
+                    .SetCustomCooldown(repConstraint.ForcedCooldown);
+            }
         }
     }
 

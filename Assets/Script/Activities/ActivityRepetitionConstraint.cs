@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Runner;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
@@ -21,8 +20,9 @@ public class ActivityRepetitionConstraint
 
     public bool IsConstraintActivityAllowed(List<Activity> sequenceActivities)
     {
-        int skip = Mathf.Max(0, sequenceActivities.Count - constraintHistoryDepth - 1);
-        int sameActivityCount = sequenceActivities.Skip(skip).Count(x => x == activity);
+        int skipIndex = Mathf.Max(0, sequenceActivities.Count - 1 - constraintHistoryDepth);
+        int sameActivityCount = sequenceActivities.Skip(skipIndex).Count(x => x == activity);
+        
         return sameActivityCount < maxRepetitions;
     }
 }
