@@ -40,7 +40,7 @@ public class PlayerCharacter : MonoBehaviour
         collisionCount++; // Incrémenter le compteur de collisions
         GameObject feedbackInstance = Instantiate(feedbackPrefab, new Vector3(transform.position.x, 
             transform.position.y + 1, transform.position.z), Quaternion.identity);
-        Debug.Log("Collision detected! Total hits: " + collisionCount);
+        // Debug.Log("Collision detected! Total hits: " + collisionCount);
         Destroy(feedbackInstance, displayTime);
     }
     
@@ -53,7 +53,7 @@ public class PlayerCharacter : MonoBehaviour
         
         UpdateMaterialTransparency();
         
-        Debug.Log("Switched to Dimension" + (currentDimension == Dimension.DimensionA ? "A" : " B"));
+        // Debug.Log("Switched to Dimension" + (currentDimension == Dimension.DimensionA ? "A" : " B"));
     }
     
     private void UpdateMaterialTransparency()

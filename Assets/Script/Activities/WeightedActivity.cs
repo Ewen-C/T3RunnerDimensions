@@ -8,7 +8,7 @@ public class WeightedActivity
     [HorizontalGroup(180)]
     [SerializeField] private Activity activity;
     [HorizontalGroup(100), LabelWidth(50)]
-    [SerializeField] private float Weight = 1f; // Proba initiale (à comparer aux autres)
+    [SerializeField] private float weight = 1f; // Proba initiale (à comparer aux autres)
     [HorizontalGroup(150)]
     [SerializeField] private AnimationCurve curveEvolution; // Variation du la proba avec le temps
     [HorizontalGroup(100), LabelWidth(50)]
@@ -18,8 +18,8 @@ public class WeightedActivity
     
     public Activity ActPublic => activity;
     public void SetCooldown() => currentCooldown = maxCooldown;
-    public void DecreaseCooldown() => currentCooldown--;
-    public float GetWeightAtTime(float t) => currentCooldown > 0 ? 0 : curveEvolution.Evaluate(t) * Weight;
+    public void DecreaseCooldown() => currentCooldown--; // Todo : Mathf.Max(currentCooldown - 1, 0);
+    public float GetWeightAtTime(float t) => currentCooldown > 0 ? 0 : curveEvolution.Evaluate(t) * weight;
     
     public void SetCustomCooldown(int newCooldown) => currentCooldown = newCooldown;
 }
