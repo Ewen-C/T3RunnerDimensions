@@ -148,11 +148,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 4
-  maxSpeed: 6
+  maxSpeed: 5
   smoothTime: 0.2
   minX: -1.7
   maxX: 1.7
-  maxLeanAngle: 40
+  maxLeanAngle: 30
   player: {fileID: 7695392482120996106}
   inputManager: {fileID: 0}
   curve:

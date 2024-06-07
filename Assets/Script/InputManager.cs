@@ -1,14 +1,17 @@
 using UnityEngine;
 using Lean.Touch;
+using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
     public delegate void MovementHandler(float direction);
     public event MovementHandler OnMoveDirectionChanged;
 
-    public delegate void DoubleTapHandler();
-    public event DoubleTapHandler OnDoubleTap;
+    public delegate void DimensionChangeHandler();
+    public event DimensionChangeHandler OnDimensionChange;
     
+    public Image leftControlArea;
+    public Image rightControlArea;
     
     private float moveDirection; // 0 = pas de mouvement, 1 = droite, -1 = gauche
     
@@ -16,24 +19,27 @@ public class InputManager : MonoBehaviour
     {
         LeanTouch.OnFingerDown += HandleFingerDown;
         LeanTouch.OnFingerUp += HandleFingerUp;
-        LeanTouch.OnFingerTap += HandleFingerTap;
+        LeanTouch.OnFingerSwipe += HandleFingerSwipe;
     }
 
     protected virtual void OnDisable()
     {
         LeanTouch.OnFingerDown -= HandleFingerDown;
         LeanTouch.OnFingerUp -= HandleFingerUp;
-        LeanTouch.OnFingerTap -= HandleFingerTap;
+        LeanTouch.OnFingerSwipe -= HandleFingerSwipe;
     }
 
     private void HandleFingerDown(LeanFinger finger)
     {
-        if (finger.ScreenPosition.y < Screen.height / 4.0f && finger.ScreenPosition.x < Screen.width / 3.0f)
+        Vector2 touchPosition = finger.ScreenPosition;
+        
+        if (IsPointerOverUIObject(leftControlArea, touchPosition))
         {
-            moveDirection = -1f;
-        } else if (finger.ScreenPosition.y < Screen.height / 4.0f && finger.ScreenPosition.x > (Screen.width / 3.0f) * 2)
+            moveDirection = -1f; // Déplacer à gauche
+        }
+        else if (IsPointerOverUIObject(rightControlArea, touchPosition))
         {
-            moveDirection = 1f;
+            moveDirection = 1f; // Déplacer à droite
         }
         
         OnMoveDirectionChanged?.Invoke(moveDirection);
@@ -44,16 +50,19 @@ public class InputManager : MonoBehaviour
         moveDirection = 0f;
         OnMoveDirectionChanged?.Invoke(moveDirection);
     }
-
-    private void HandleFingerTap(LeanFinger finger)
-    { 
-        if (finger.ScreenPosition.y < Screen.height / 4.0f && finger.ScreenPosition.x > (Screen.width / 3.0f) && 
-            finger.ScreenPosition.x < (Screen.width / 3.0f) * 2)
+    
+    private void HandleFingerSwipe(LeanFinger finger)
+    {
+        // Detect vertical swipe up
+        if (finger.SwipeScreenDelta.y > Mathf.Abs(finger.SwipeScreenDelta.x) && finger.SwipeScreenDelta.y > 50)
         {
-            if (finger.TapCount == 2)
-            {
-                OnDoubleTap?.Invoke();
-            }
+            OnDimensionChange?.Invoke();
         }
+    }
+    
+    private bool IsPointerOverUIObject(Image img, Vector2 screenPosition)
+    {
+        RectTransform rectTransform = img.rectTransform;
+        return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, screenPosition, null);
     }
 }

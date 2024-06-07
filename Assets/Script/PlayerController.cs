@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = player.GetComponent<Rigidbody>();
         inputManager.OnMoveDirectionChanged += HandleMoveDirectionChanged;
-        inputManager.OnDoubleTap += HandleDoubleTap;
+        inputManager.OnDimensionChange += HandleDimensionChange;
     }
     
     private void HandleMoveDirectionChanged(float direction)
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         targetSpeed  = direction * maxSpeed;
     }
     
-    private void HandleDoubleTap()
+    private void HandleDimensionChange()
     {
         player.GetComponent<PlayerCharacter>().SwitchDimension();
     }
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         if (inputManager != null)
         {
             inputManager.OnMoveDirectionChanged -= HandleMoveDirectionChanged;
-            inputManager.OnDoubleTap -= HandleDoubleTap;
+            inputManager.OnDimensionChange -= HandleDimensionChange;
         }
     }
 }
