@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a96553e3811461f94978d92411aea39, type: 3}
-  m_Name: Pattern_Tuto
+  m_Name: Pattern_Facile
   m_EditorClassIdentifier: 
   geometryPrefabs:
-  - {fileID: 2552108946675962218, guid: ba94e2aaf347f1b428bb18fb65e19b61, type: 3}
-  - {fileID: 2552108946675962218, guid: cb35126496b82e24283d8b18b7a60918, type: 3}
+  - {fileID: 2552108946675962218, guid: e15b389e31572c6428312e1a98572d64, type: 3}
+  - {fileID: 2552108946675962218, guid: 26c41d9755cd93141b2930ac05792b19, type: 3}
