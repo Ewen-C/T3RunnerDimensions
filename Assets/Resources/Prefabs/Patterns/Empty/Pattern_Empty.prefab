@@ -70,13 +70,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3101293547657176479, guid: 674e5529517d8464e833907b282c72e8,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101293547657176479, guid: 674e5529517d8464e833907b282c72e8,
+        type: 3}
       propertyPath: m_LocalScale.z
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6371102343422877720, guid: 674e5529517d8464e833907b282c72e8,
         type: 3}
       propertyPath: m_Name
-      value: Pattern_OOO
+      value: Pattern_Empty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
