@@ -39,7 +39,7 @@ public class PlayerCharacter : MonoBehaviour
         var position = transform.position;
         GameObject feedbackInstance = Instantiate(feedbackPrefab, new Vector3(position.x, 
             position.y + 1, position.z), Quaternion.identity);
-        Debug.Log("Collision detected! Total hits: " + collisionCount);
+        //Debug.Log("Collision detected! Total hits: " + collisionCount);
         Destroy(feedbackInstance, displayTime);
     }
     
