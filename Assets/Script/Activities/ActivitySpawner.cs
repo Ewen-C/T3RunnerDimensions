@@ -8,10 +8,9 @@ using UnityEngine;
 public class ActivitySpawner : MonoBehaviour
 {
     [SerializeField] private int maxProgression = 50; // Avancement des types de patterns avec les courbes
-    [SerializeField, ReadOnly] private int numGeneratedPatterns = 0; // Utilisé pour la progression
+    [SerializeField, ReadOnly] private int numGeneratedPatterns; // Utilisé pour la progression
     
-    private List<Activity> activitySequence = new(); // Patterns générés
-    // [SerializeField] private Object[] randomActivities;
+    private List<Activity> activitySequence = new(); // Patterns générés et spawnés
     
     [SerializeField] private List<Activity> firstActivities;
     [SerializeField] private List<WeightedActivity> randomActivities;
@@ -51,11 +50,12 @@ public class ActivitySpawner : MonoBehaviour
         return rdActivity.ActPublic;
     }
 
-    public GameObject GenerateSequenceGeometry(Activity newActivity, Vector3 patternPosition)
+    public GameObject GenerateSequenceGeometry(Activity newActivity, Vector3 patternPositionZ)
     {
         GameObject newActivityPrefab = newActivity.GetGeoPrefabPublicRandom();
         float newActivityZSize = newActivityPrefab.GetComponentInChildren<MeshRenderer>().transform.localScale.z;
-        Vector3 newActivityPos = patternPosition + new Vector3(0, 0, newActivityZSize/2);
+        Vector3 newActivityPos = patternPositionZ + new Vector3(0, 0, newActivityZSize/2);
+        Debug.Log($"newActivity : {newActivity.name} - newActivityZSize : {newActivityZSize} - patternPositionZ : {patternPositionZ} - newActivityPos : {newActivityPos}");
         return Instantiate(newActivityPrefab, newActivityPos, Quaternion.identity);
     }
 

@@ -21,7 +21,7 @@ public class ActivityManager : MonoBehaviour
         float firstPatternPositionZ = playerPositionZ - patternRemovalDistance;
         spawnedPatterns = new List<GameObject>(activitySpawner.SpawnFirstPatterns(firstPatternPositionZ));
          
-        // Instancie le reste des sols
+        // Instancie le reste des sols, jusqu'à atteindre maxGrounds
         for (int i = spawnedPatterns.Count; i < maxGrounds; i++)
         {
             CreateAndRegisterActivity();
@@ -36,12 +36,12 @@ public class ActivityManager : MonoBehaviour
             pattern.transform.position += Vector3.back * (groundMoveSpeed * Time.deltaTime);
         }
 
-        RemovePreviousActivity();
+        RemovePreviousActivityAndSpawn();
     }
     
-    private void RemovePreviousActivity()
+    private void RemovePreviousActivityAndSpawn()
     {
-        // Si le premier pattern de la liste est derrière le joueur, le détruire 
+        // Si le premier pattern de la liste est derrière le joueur, le détruire (return condition inverse)
         if (spawnedPatterns.Count == 0 || spawnedPatterns[0].transform.position.z > playerPositionZ - patternRemovalDistance) return;
         
         Destroy(spawnedPatterns[0]);
@@ -57,7 +57,8 @@ public class ActivityManager : MonoBehaviour
 
     private float GetSpawnPositionZ()
     {
-        float currentPositionZ = 0;
+        float currentPositionZ = spawnedPatterns[0].transform.position.z -
+                                 (spawnedPatterns[0].GetComponentInChildren<MeshRenderer>().transform.localScale.z) / 2;
 
         for (int i = 0; i < spawnedPatterns.Count; i++)
         {
