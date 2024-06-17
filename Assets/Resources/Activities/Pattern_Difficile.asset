@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Pattern_Difficile
   m_EditorClassIdentifier: 
   geometryPrefabs:
-  - {fileID: 2552108946675962218, guid: 55b4527ee8fa018449de7e533c3bd9be, type: 3}
+  - {fileID: 2552108946675962218, guid: ec8f2836b13da9b4db4fa462ebc149e4, type: 3}
+  - {fileID: 2552108946675962218, guid: dc42140a98ed6a74fb36b1fb78fd1df0, type: 3}
+  - {fileID: 2552108946675962218, guid: 95a2674e7d286a644810f93c9d18cbf8, type: 3}

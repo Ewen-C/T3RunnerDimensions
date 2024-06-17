@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Pattern_Moyen
   m_EditorClassIdentifier: 
   geometryPrefabs:
-  - {fileID: 2552108946675962218, guid: 55b4527ee8fa018449de7e533c3bd9be, type: 3}
+  - {fileID: 2552108946675962218, guid: a661e83486400054b8fe3aa333b789b9, type: 3}
+  - {fileID: 2552108946675962218, guid: a697d79fc202a3e408c1e53d58f87d73, type: 3}
+  - {fileID: 2552108946675962218, guid: 6f5e61e80b07c2e49a7f8cbf0a9e1056, type: 3}
+  - {fileID: 2552108946675962218, guid: 08f4380931d5e4f4f87794d4a61a4411, type: 3}
+  - {fileID: 2552108946675962218, guid: 2fc91f8b5922d8b41a5d8e450b07d7b3, type: 3}
