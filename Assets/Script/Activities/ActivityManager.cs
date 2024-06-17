@@ -7,7 +7,7 @@ public class ActivityManager : MonoBehaviour
     public float groundMoveSpeed = 10f; // La vitesse de défilement des patterns
     public int maxGrounds = 7; // Nombre de patterns à maintenir à l'écran
     private float playerPositionZ; // La référence au joueur
-    public float patternRemovalDistance = 30f; // Distance du joueur où les patterns sont détruits
+    public float patternRemovalDistance = 15f; // Distance du joueur où les patterns sont détruits
 
     private ActivitySpawner activitySpawner;
     private List<GameObject> spawnedPatterns = new(); // Prefabs des patterns
@@ -18,7 +18,8 @@ public class ActivityManager : MonoBehaviour
         activitySpawner = GetComponent<ActivitySpawner>();
         
         // Instancie les premiers sols
-        spawnedPatterns = new List<GameObject>(activitySpawner.SpawnFirstPatterns(playerPositionZ));
+        float firstPatternPositionZ = playerPositionZ - patternRemovalDistance;
+        spawnedPatterns = new List<GameObject>(activitySpawner.SpawnFirstPatterns(firstPatternPositionZ));
          
         // Instancie le reste des sols
         for (int i = spawnedPatterns.Count; i < maxGrounds; i++)
@@ -51,12 +52,18 @@ public class ActivityManager : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private void CreateAndRegisterActivity()
     {
-        spawnedPatterns.Add(activitySpawner.SpawnActivity(GetSpawnPosition()));
+        spawnedPatterns.Add(activitySpawner.SpawnActivity(GetSpawnPositionZ()));
     }
 
-    private Vector3 GetSpawnPosition()
+    private float GetSpawnPositionZ()
     {
-        // TODO : Calcul dynamique de la position des sols à la place de -35
-        return new Vector3(0, 0, playerPositionZ) - new Vector3(0, 0, -35f * spawnedPatterns.Count);
+        float currentPositionZ = 0;
+
+        for (int i = 0; i < spawnedPatterns.Count; i++)
+        {
+            currentPositionZ += spawnedPatterns[i].GetComponentInChildren<MeshRenderer>().transform.localScale.z;
+        }
+
+        return currentPositionZ;
     }
 }
