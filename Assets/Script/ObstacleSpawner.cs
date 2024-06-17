@@ -1,26 +1,32 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
+using Object = UnityEngine.Object;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public Transform obstaclePrefabA; // Le prefab de l obstacle A
-    public Transform obstaclePrefabB; // Le prefab de l obstacle B
-    
-    public GameObject SpawnPatternStart(Vector3 patternPosition)
-    {
-        Object patternStart = Resources.Load("Prefabs/ObstaclePatterns/PatternStart");
-        return Instantiate(patternStart, patternPosition, Quaternion.identity).GameObject(); 
-    }
-    
-    public GameObject SpawnPatternTuto(Vector3 patternPosition)
-    {
-        Object patternTuto = Resources.Load("Prefabs/ObstaclePatterns/PatternTuto");
-        return Instantiate(patternTuto, patternPosition, Quaternion.identity).GameObject(); 
-    }
+    private Object[] patternList;
 
+    public List<GameObject> SpawnFirstPatterns(Vector3 playerPosition)
+    {
+        patternList = Resources.LoadAll("Prefabs/ObstaclePatterns/RandomPatterns", typeof(GameObject));
+        List<GameObject> resPatterns = new List<GameObject>();
+
+        Vector3 currentPosition = new Vector3(0, playerPosition.y, playerPosition.z);
+        Object patternStart = Resources.Load("Prefabs/ObstaclePatterns/PatternStart");
+        Object patternTuto = Resources.Load("Prefabs/ObstaclePatterns/PatternTuto");
+        
+        resPatterns.Add(Instantiate(patternStart, currentPosition, Quaternion.identity).GameObject());
+        currentPosition -= new Vector3(0, 0, -35f);
+        resPatterns.Add(Instantiate(patternStart, currentPosition, Quaternion.identity).GameObject());
+        currentPosition -= new Vector3(0, 0, -35f);
+        resPatterns.Add(Instantiate(patternTuto, currentPosition, Quaternion.identity).GameObject());
+
+        return resPatterns;
+    }
+    
     public GameObject SpawnPattern(Vector3 patternPosition)
     {
-        var patternList = Resources.LoadAll("Prefabs/ObstaclePatterns/RandomPatterns", typeof(GameObject));
         var selectedPattern = patternList[Random.Range(0, patternList.Length)];
         Debug.Log("Spawned " + selectedPattern);
         
