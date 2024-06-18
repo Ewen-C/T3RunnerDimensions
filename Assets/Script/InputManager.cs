@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     
     public Image leftControlArea;
     public Image rightControlArea;
+    public Image middleControlArea;
     
     private float moveDirection; // 0 = pas de mouvement, 1 = droite, -1 = gauche
     
@@ -19,14 +20,14 @@ public class InputManager : MonoBehaviour
     {
         LeanTouch.OnFingerDown += HandleFingerDown;
         LeanTouch.OnFingerUp += HandleFingerUp;
-        LeanTouch.OnFingerSwipe += HandleFingerSwipe;
+        LeanTouch.OnFingerTap += HandleFingerTap;
     }
 
     protected virtual void OnDisable()
     {
         LeanTouch.OnFingerDown -= HandleFingerDown;
         LeanTouch.OnFingerUp -= HandleFingerUp;
-        LeanTouch.OnFingerSwipe -= HandleFingerSwipe;
+        LeanTouch.OnFingerSwipe -= HandleFingerTap;
     }
 
     private void HandleFingerDown(LeanFinger finger)
@@ -51,10 +52,11 @@ public class InputManager : MonoBehaviour
         OnMoveDirectionChanged?.Invoke(moveDirection);
     }
     
-    private void HandleFingerSwipe(LeanFinger finger)
+    private void HandleFingerTap(LeanFinger finger)
     {
-        // Detect vertical swipe up
-        if (finger.SwipeScreenDelta.y > Mathf.Abs(finger.SwipeScreenDelta.x) && finger.SwipeScreenDelta.y > 50)
+        Vector2 touchPosition = finger.ScreenPosition;
+        
+        if (IsPointerOverUIObject(middleControlArea, touchPosition))
         {
             OnDimensionChange?.Invoke();
         }
