@@ -1,56 +1,82 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class GaugeManager : MonoBehaviour
 {
     public static GaugeManager Instance { get; private set; }
-    public float gaugeAmount = 0f;
-    public bool shieldActive = false;
-    public float decreaseRate = 12f;
+    public Slider gaugeSlider;
+    public Image gaugeFillImage;
+    
+    public int pointsPerCollectableWhite = 3;
+    public int pointsPerCollectableYellow = 2;
+    public float decreaseRateYellow = 12f;
+    
+    private const int maxWhitePoints = 99;
+    private bool isYellowPhase = false;
+    
+    private Color whitePhaseColor = Color.white;
+    private Color yellowPhaseColor = Color.yellow;
+    
+    public bool IsYellowPhase => isYellowPhase;
 
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else
+        {
             Destroy(gameObject);
+        }
     }
 
     private void Update()
     {
-        if (shieldActive)
+        if (isYellowPhase)
         {
-            gaugeAmount -= decreaseRate * Time.deltaTime;
-            if (gaugeAmount <= 0)
+            // Diminue les points continuellement en phase jaune
+            gaugeSlider.value -= decreaseRateYellow * Time.deltaTime;
+            if (gaugeSlider.value <= 0)
             {
-                gaugeAmount = 0;
-                shieldActive = false;
-                // TODO: Update jauge to white
+                SwitchToWhitePhase();
             }
-            // TODO: Update UI for score
         }
     }
 
-    public void AddPoints(int points)
+    public void AddPoints(int value)
     {
-        if (!shieldActive && gaugeAmount < 99)
+        if (!isYellowPhase)
         {
-            gaugeAmount += points;
-            if (gaugeAmount >= 99)
+            // Ajoute des points en phase blanche
+            gaugeSlider.value += value;
+            if (gaugeSlider.value >= maxWhitePoints)
             {
-                gaugeAmount = 99;
-                shieldActive = true;
-                // TODO: Update jauge to yellow
+                SwitchToYellowPhase();
             }
-            // TODO: Update UI for score
         }
-        else if (shieldActive)
+        else
         {
-            gaugeAmount += points;
-            if (gaugeAmount > 99) gaugeAmount = 99;  // Cap the GaugeAmount at 99 even in shield mode
-            // TODO: Update UI for score
+            // Ajoute moins de points en phase jaune
+            gaugeSlider.value += value;
+            if (gaugeSlider.value > maxWhitePoints)
+            {
+                gaugeSlider.value = maxWhitePoints;
+            }
         }
+    }
+    
+    private void SwitchToYellowPhase()
+    {
+        isYellowPhase = true;
+        gaugeFillImage.color = yellowPhaseColor;
+    }
+
+    private void SwitchToWhitePhase()
+    {
+        isYellowPhase = false;
+        gaugeSlider.value = 0;
+        gaugeFillImage.color = whitePhaseColor;
     }
 }
