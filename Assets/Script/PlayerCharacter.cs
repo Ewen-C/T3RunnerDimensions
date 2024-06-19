@@ -19,6 +19,9 @@ public class PlayerCharacter : MonoBehaviour
     
     public enum Dimension { DimensionA, DimensionB }
     public Dimension currentDimension = Dimension.DimensionA;
+
+    public Material skybox_Red;
+    public Material skybox_Blue;
     
     void Start()
     {
@@ -51,6 +54,7 @@ public class PlayerCharacter : MonoBehaviour
             (currentDimension == Dimension.DimensionA) ? materialDimensionA : materialDimensionB;
         
         UpdateMaterialTransparency();
+        ChangeSkybox();
         
         Debug.Log("Switched to Dimension" + (currentDimension == Dimension.DimensionA ? "A" : " B"));
     }
@@ -65,5 +69,17 @@ public class PlayerCharacter : MonoBehaviour
         
         materialObstaclesA.SetColor(Shader.PropertyToID("_BaseColor"), currentColorA);
         materialObstaclesB.SetColor(Shader.PropertyToID("_BaseColor"), currentColorB);
+    }
+
+    private void ChangeSkybox()
+    {
+        if (currentDimension == Dimension.DimensionA)
+        {
+            RenderSettings.skybox = skybox_Blue;
+        }
+        else if (currentDimension == Dimension.DimensionB)
+        {
+            RenderSettings.skybox = skybox_Red;
+        }
     }
 }
