@@ -1,17 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    private int collisionCount; // Compteur de collisions
-    
-    public Text hitText;
-    public GameObject feedbackPrefab;
-    public float displayTime = 0.2f;
-    
-    public int dimensionALayer;
-    public int dimensionBLayer;
-
+    [SerializeField] private int dimensionALayer;
+    [SerializeField] private int dimensionBLayer;
     [SerializeField] private Material materialDimensionA;
     [SerializeField] private Material materialDimensionB;
     [SerializeField] private Material materialObstaclesA;
@@ -26,21 +20,18 @@ public class PlayerCharacter : MonoBehaviour
         UpdateMaterialTransparency();
     }
     
-    void Update()
-    {
-        hitText.text = "Hit : " + collisionCount; // Met à jour le texte affiché
-    }
-    
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Obstacle")) return;
-        
-        collisionCount++; // Incrémenter le compteur de collisions
-        var position = transform.position;
-        GameObject feedbackInstance = Instantiate(feedbackPrefab, new Vector3(position.x, 
-            position.y + 1, position.z), Quaternion.identity);
-        //Debug.Log("Collision detected! Total hits: " + collisionCount);
-        Destroy(feedbackInstance, displayTime);
+        if (other.CompareTag("ObstacleDimension"))
+        {
+            Debug.Log("HIT Dimension!");
+            PlayerManager.gameOver = true;
+        }
+        else if (other.CompareTag("ObstacleFixe"))
+        {
+            Debug.Log("HIT Fixe!");
+            PlayerManager.gameOver = true;
+        } 
     }
     
     public void SwitchDimension()
