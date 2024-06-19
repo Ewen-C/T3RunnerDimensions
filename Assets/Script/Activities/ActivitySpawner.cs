@@ -15,7 +15,16 @@ public class ActivitySpawner : MonoBehaviour
     [SerializeField] private List<Activity> firstActivities;
     [SerializeField] private List<WeightedActivity> randomActivities;
     [SerializeField] private List<ActivityRepetitionConstraint> repetitionConstraints;
-    [SerializeField] private List<ActivityProcessorChange> activityProcessorChanges;
+    
+    [SerializeField] private ActivitySequence firstSequence;
+    [SerializeField] private List<ActivitySequence> randomSequences;
+
+    [SerializeField] private float startingDifficulty = 30;
+    [SerializeField] private float difficultyIncrement = 5;
+    [SerializeField] private float maxDifficulty = 100;
+    private float currentDifficulty;
+    
+    // [SerializeField] private List<ActivityProcessorChange> activityProcessorChanges;
 
     public List<GameObject> SpawnFirstPatterns(float currentPositionZ)
     {
@@ -28,6 +37,8 @@ public class ActivitySpawner : MonoBehaviour
         }
         
         return firstPatternsPrefabs;
+        
+        // firstSequence
     }
     
     public GameObject SpawnActivity(float patternPositionZ)

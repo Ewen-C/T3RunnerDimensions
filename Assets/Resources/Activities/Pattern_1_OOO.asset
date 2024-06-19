@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Pattern_1_OOO
   m_EditorClassIdentifier: 
   typeEnum: 3
-  difficultyScore: 1
   geometryPrefabs:
   - {fileID: 2552108946675962218, guid: 02b9dc1fcf8788e4790deedb1a44051a, type: 3}
   - {fileID: 2552108946675962218, guid: ba94e2aaf347f1b428bb18fb65e19b61, type: 3}

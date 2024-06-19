@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundsCollider: {fileID: 3998305636610819457}
+  difficultyScore: 1
