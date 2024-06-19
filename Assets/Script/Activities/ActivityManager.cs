@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class ActivityManager : MonoBehaviour
@@ -11,16 +12,16 @@ public class ActivityManager : MonoBehaviour
 
     private ActivitySpawner activitySpawner;
     private List<GameObject> spawnedPatterns = new(); // Prefabs des patterns
-    
+
     private void Start()
     {
         playerPositionZ = GameObject.FindGameObjectWithTag("Player").transform.position.z;
         activitySpawner = GetComponent<ActivitySpawner>();
-        
+
         // Instancie les premiers sols
         float firstPatternPositionZ = playerPositionZ - patternRemovalDistance;
         spawnedPatterns = new List<GameObject>(activitySpawner.SpawnFirstPatterns(firstPatternPositionZ));
-         
+
         // Instancie le reste des sols, jusqu'à atteindre maxGrounds
         for (int i = spawnedPatterns.Count; i < maxGrounds; i++)
         {
@@ -38,12 +39,13 @@ public class ActivityManager : MonoBehaviour
 
         RemovePreviousActivityAndSpawn();
     }
-    
+
     private void RemovePreviousActivityAndSpawn()
     {
         // Si le premier pattern de la liste est derrière le joueur, le détruire (return condition inverse)
-        if (spawnedPatterns.Count == 0 || spawnedPatterns[0].transform.position.z > playerPositionZ - patternRemovalDistance) return;
-        
+        if (spawnedPatterns.Count == 0 ||
+            spawnedPatterns[0].transform.position.z > playerPositionZ - patternRemovalDistance) return;
+
         Destroy(spawnedPatterns[0]);
         spawnedPatterns.RemoveAt(0);
         CreateAndRegisterActivity(); // Instancie un nouveau pattern

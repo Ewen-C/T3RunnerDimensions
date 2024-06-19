@@ -11,7 +11,7 @@ public class ActivityRepetitionConstraint
     [HorizontalGroup(100), LabelWidth(50)]
     [SerializeField] private int maxRepetitions = 1;
     [HorizontalGroup(100), LabelWidth(50)]
-    [SerializeField] private int constraintHistoryDepth = 1;
+    [SerializeField] private int constraintHistoryDepth = 3;
     [HorizontalGroup(100), LabelWidth(50)]
     [SerializeField] private int forcedCooldown = 1;
 

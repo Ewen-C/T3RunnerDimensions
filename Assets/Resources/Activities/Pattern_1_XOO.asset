@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a96553e3811461f94978d92411aea39, type: 3}
   m_Name: Pattern_1_XOO
   m_EditorClassIdentifier: 
+  typeEnum: 2
+  difficultyScore: 15
   geometryPrefabs:
   - {fileID: 2552108946675962218, guid: 55b4527ee8fa018449de7e533c3bd9be, type: 3}

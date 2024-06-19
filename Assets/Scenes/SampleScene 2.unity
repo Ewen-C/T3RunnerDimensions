@@ -819,27 +819,54 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c6779237a5de9944680448ab150e7aa2, type: 2}
   randomActivities:
   - activity: {fileID: 11400000, guid: 4aac63f068ad96242b9429653fd52cc0, type: 2}
-    weight: 2
+    weight: 20
     curveEvolution:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: -2.0499687
+        outSlope: -2.0499687
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0
+        outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        time: 0.29315186
+        value: 0.39904785
+        inSlope: 0.10561609
+        outSlope: 0.10561609
         tangentMode: 34
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.53043467
+        value: 0.93559194
+        inSlope: 0.38548744
+        outSlope: 0.38548744
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7982583
+        value: 0.53647417
+        inSlope: 0.02571009
+        outSlope: 0.02571009
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 0.98709106
+        value: 0.97953796
+        inSlope: 2.346329
+        outSlope: 2.346329
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -875,34 +902,39 @@ MonoBehaviour:
     maxCooldown: 1
     currentCooldown: 0
   - activity: {fileID: 11400000, guid: 5d3cac8ecc47f0e41a6d9709d009d2a8, type: 2}
-    weight: 2
+    weight: 1
     curveEvolution:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: -1
+        outSlope: -1
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0
+        outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        value: 0
+        inSlope: -1
+        outSlope: -1
         tangentMode: 34
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.33333334
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     maxCooldown: 1
     currentCooldown: 0
-  repetitionConstraints: []
+  repetitionConstraints:
+  - activity: {fileID: 0}
+    maxRepetitions: 1
+    constraintHistoryDepth: 1
+    forcedCooldown: 1
+  activityProcessorChanges: []
 --- !u!114 &1071841214
 MonoBehaviour:
   m_ObjectHideFlags: 0

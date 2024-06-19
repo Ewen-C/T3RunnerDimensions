@@ -15,6 +15,7 @@ public class ActivitySpawner : MonoBehaviour
     [SerializeField] private List<Activity> firstActivities;
     [SerializeField] private List<WeightedActivity> randomActivities;
     [SerializeField] private List<ActivityRepetitionConstraint> repetitionConstraints;
+    [SerializeField] private List<ActivityProcessorChange> activityProcessorChanges;
 
     public List<GameObject> SpawnFirstPatterns(float currentPositionZ)
     {
@@ -31,7 +32,9 @@ public class ActivitySpawner : MonoBehaviour
     
     public GameObject SpawnActivity(float patternPositionZ)
     {
-        return GenerateSequenceGeometry(GenerateSequence(), new Vector3(0, 0, patternPositionZ));
+        Activity newSequence = GenerateSequence();
+        ApplyProcessorChanges();
+        return GenerateSequenceGeometry(newSequence, new Vector3(0, 0, patternPositionZ));
     }
 
     public Activity GenerateSequence()
@@ -92,5 +95,10 @@ public class ActivitySpawner : MonoBehaviour
                     .SetCustomCooldown(repConstraint.ForcedCooldown);
             }
         }
+    }
+
+    private void ApplyProcessorChanges()
+    {
+        
     }
 }
