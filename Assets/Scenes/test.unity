@@ -1328,9 +1328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13d953c7210cae44aae9bbc0f01a4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftControlArea: {fileID: 0}
+  rightControlArea: {fileID: 0}
   changeDimControlArea: {fileID: 1810964266}
-  sensitivity: 0.08
-  deadZone: 3
 --- !u!114 &1704150801
 MonoBehaviour:
   m_ObjectHideFlags: 0
