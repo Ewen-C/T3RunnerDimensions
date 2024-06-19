@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 9115326174810707360}
   m_Layer: 0
   m_Name: Cube (6)
-  m_TagString: Untagged
+  m_TagString: ObstacleFixe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,7 +204,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 7342503842634935391}
   m_Layer: 0
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: ObstacleFixe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -624,7 +624,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -746,6 +746,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstaclesB (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5493612244933227656, guid: 97b1cb90306414d45aeccf4c7e275b8b,
+        type: 3}
+      propertyPath: m_TagString
+      value: ObstacleDimension
+      objectReference: {fileID: 0}
     - target: {fileID: 6840658663496524744, guid: 97b1cb90306414d45aeccf4c7e275b8b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -824,6 +829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ObstaclesA (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493612244933227656, guid: 729a5c176457dbc4db3bee09b4ebdbbf,
+        type: 3}
+      propertyPath: m_TagString
+      value: ObstacleDimension
       objectReference: {fileID: 0}
     - target: {fileID: 6840658663496524744, guid: 729a5c176457dbc4db3bee09b4ebdbbf,
         type: 3}
@@ -904,6 +914,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstaclesA
       objectReference: {fileID: 0}
+    - target: {fileID: 5493612244933227656, guid: 729a5c176457dbc4db3bee09b4ebdbbf,
+        type: 3}
+      propertyPath: m_TagString
+      value: ObstacleDimension
+      objectReference: {fileID: 0}
     - target: {fileID: 6840658663496524744, guid: 729a5c176457dbc4db3bee09b4ebdbbf,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -982,6 +997,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ObstaclesB
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493612244933227656, guid: 97b1cb90306414d45aeccf4c7e275b8b,
+        type: 3}
+      propertyPath: m_TagString
+      value: ObstacleDimension
       objectReference: {fileID: 0}
     - target: {fileID: 6840658663496524744, guid: 97b1cb90306414d45aeccf4c7e275b8b,
         type: 3}

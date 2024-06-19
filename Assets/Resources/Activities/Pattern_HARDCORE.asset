@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a96553e3811461f94978d92411aea39, type: 3}
-  m_Name: test-empty
+  m_Name: Pattern_HARDCORE
   m_EditorClassIdentifier: 
   geometryPrefabs:
-  - {fileID: 2552108946675962218, guid: b5a5e58a0f815324390413699d676d1b, type: 3}
+  - {fileID: 2552108946675962218, guid: ec8f2836b13da9b4db4fa462ebc149e4, type: 3}
+  - {fileID: 2552108946675962218, guid: 8286bbdd74eb5c24abad84b031d24a18, type: 3}
+  - {fileID: 2552108946675962218, guid: 376df13233172e8468d76755c2e942db, type: 3}

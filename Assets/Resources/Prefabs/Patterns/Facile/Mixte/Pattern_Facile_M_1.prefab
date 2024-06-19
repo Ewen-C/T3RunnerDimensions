@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 8411711585637617957}
   m_Layer: 0
   m_Name: PolyShape
-  m_TagString: Untagged
+  m_TagString: ObstacleFixe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,11 +406,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &2921316116700119554
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 1398682228749948618}
   m_Layer: 0
   m_Name: PolyShape (1)
-  m_TagString: Untagged
+  m_TagString: ObstacleFixe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -787,7 +787,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -819,11 +819,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &7560587135284848701
@@ -1149,15 +1149,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstaclesB
       objectReference: {fileID: 0}
+    - target: {fileID: 5493612244933227656, guid: 97b1cb90306414d45aeccf4c7e275b8b,
+        type: 3}
+      propertyPath: m_TagString
+      value: ObstacleDimension
+      objectReference: {fileID: 0}
     - target: {fileID: 6840658663496524744, guid: 97b1cb90306414d45aeccf4c7e275b8b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6840658663496524744, guid: 97b1cb90306414d45aeccf4c7e275b8b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6840658663496524744, guid: 97b1cb90306414d45aeccf4c7e275b8b,
         type: 3}
@@ -1167,7 +1172,7 @@ PrefabInstance:
     - target: {fileID: 6840658663496524744, guid: 97b1cb90306414d45aeccf4c7e275b8b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.4999995
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 6840658663496524744, guid: 97b1cb90306414d45aeccf4c7e275b8b,
         type: 3}
@@ -1363,6 +1368,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ObstaclesA (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493612244933227656, guid: 729a5c176457dbc4db3bee09b4ebdbbf,
+        type: 3}
+      propertyPath: m_TagString
+      value: ObstacleDimension
       objectReference: {fileID: 0}
     - target: {fileID: 6840658663496524744, guid: 729a5c176457dbc4db3bee09b4ebdbbf,
         type: 3}

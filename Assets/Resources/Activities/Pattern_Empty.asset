@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Pattern_Empty
   m_EditorClassIdentifier: 
   geometryPrefabs:
-  - {fileID: 2552108946675962218, guid: 02b9dc1fcf8788e4790deedb1a44051a, type: 3}
+  - {fileID: 2552108946675962218, guid: b5a5e58a0f815324390413699d676d1b, type: 3}

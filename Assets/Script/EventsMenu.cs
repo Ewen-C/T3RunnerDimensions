@@ -5,7 +5,7 @@ public class EventsMenu : MonoBehaviour
 {
     public void ReplayGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("test");
     }
 
     public void QuitGame()
