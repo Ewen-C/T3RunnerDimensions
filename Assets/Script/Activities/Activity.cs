@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Activity", menuName = "ProcGen/Activity", order = 0)]
 public class Activity : ScriptableObject
 {
-    public enum ActivityTypeEnum
+    public enum ActivityType
     {
-        Start_0_Empty,
-        Start_1_Tuto,
+        Start_Empty,
+        Start_Tuto,
         Full_Slalom,
         Main_Slalom, 
         Main_Switch,
@@ -15,7 +16,7 @@ public class Activity : ScriptableObject
         Rest,
     }
     
-    [EnumPaging] /* <- REQUIRED TO MAKE ENUMS WORK WITH ODIN !! */ [SerializeField] private ActivityTypeEnum typeEnum;
+    [EnumPaging] /* <- REQUIRED TO MAKE ENUMS WORK WITH ODIN !! */ [SerializeField] private ActivityType activityType;
     [SerializeField] private GameObject[] geometryPrefabs;
 
     public GameObject GetGeoPrefabPublicRandom()

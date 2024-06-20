@@ -813,13 +813,13 @@ MonoBehaviour:
   maxProgression: 30
   numGeneratedPatterns: 0
   firstActivities:
-  - {fileID: 11400000, guid: c6779237a5de9944680448ab150e7aa2, type: 2}
-  - {fileID: 11400000, guid: c6779237a5de9944680448ab150e7aa2, type: 2}
-  - {fileID: 11400000, guid: c6779237a5de9944680448ab150e7aa2, type: 2}
-  - {fileID: 11400000, guid: c6779237a5de9944680448ab150e7aa2, type: 2}
+  - {fileID: 11400000, guid: 626362fae84eb034e9174e01da484c8c, type: 2}
+  - {fileID: 11400000, guid: 626362fae84eb034e9174e01da484c8c, type: 2}
+  - {fileID: 11400000, guid: 626362fae84eb034e9174e01da484c8c, type: 2}
+  - {fileID: 11400000, guid: fa51c812ad16ed84c9561721bdd0616e, type: 2}
   randomActivities:
-  - activity: {fileID: 11400000, guid: 4aac63f068ad96242b9429653fd52cc0, type: 2}
-    weight: 20
+  - activity: {fileID: 11400000, guid: 64153023910efb14db30798bf278a515, type: 2}
+    weight: 5
     curveEvolution:
       serializedVersion: 2
       m_Curve:
@@ -873,7 +873,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     maxCooldown: 1
     currentCooldown: 0
-  - activity: {fileID: 11400000, guid: f893076159c6c8b48a07cc872bc8fae7, type: 2}
+  - activity: {fileID: 11400000, guid: 55cceef8d5b28194dad2c9bde8404045, type: 2}
     weight: 2
     curveEvolution:
       serializedVersion: 2
@@ -901,7 +901,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     maxCooldown: 1
     currentCooldown: 0
-  - activity: {fileID: 11400000, guid: 5d3cac8ecc47f0e41a6d9709d009d2a8, type: 2}
+  - activity: {fileID: 11400000, guid: fd7517a57c3ba574ea68a9bc94c034e2, type: 2}
     weight: 1
     curveEvolution:
       serializedVersion: 2
@@ -929,12 +929,52 @@ MonoBehaviour:
       m_RotationOrder: 4
     maxCooldown: 1
     currentCooldown: 0
-  repetitionConstraints:
-  - activity: {fileID: 0}
-    maxRepetitions: 1
-    constraintHistoryDepth: 1
-    forcedCooldown: 1
-  activityProcessorChanges: []
+  - activity: {fileID: 11400000, guid: 1264c948ebef32b4389381f2936b03f2, type: 2}
+    weight: 1
+    curveEvolution:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 0
+        inSlope: -2
+        outSlope: 2
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    maxCooldown: 1
+    currentCooldown: 0
+  repetitionConstraints: []
+  firstSequence: {fileID: 11400000, guid: 79b246795aa30dc4bb2766ed681d981c, type: 2}
+  randomSequences:
+  - {fileID: 11400000, guid: 7f04dbd9c8d4e674da46cd64c9f70363, type: 2}
+  - {fileID: 11400000, guid: c3356c96e9222234384b34f64d619824, type: 2}
+  - {fileID: 11400000, guid: 35c3a3ea959b4674cb092387de284a84, type: 2}
+  startingDifficulty: 30
+  difficultyIncrement: 5
+  maxDifficulty: 100
 --- !u!114 &1071841214
 MonoBehaviour:
   m_ObjectHideFlags: 0

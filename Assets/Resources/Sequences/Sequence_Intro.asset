@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f03251fc32604bc3b4184f75ad6f78bb, type: 3}
-  m_Name: SequenceSwitch
+  m_Name: Sequence_Intro
   m_EditorClassIdentifier: 
-  sequenceActivities: 0200000001000000020000000200000003000000
+  sequenceActivities: 00000000000000000000000001000000

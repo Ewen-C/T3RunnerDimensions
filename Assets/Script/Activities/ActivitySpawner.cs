@@ -18,11 +18,6 @@ public class ActivitySpawner : MonoBehaviour
     
     [SerializeField] private ActivitySequence firstSequence;
     [SerializeField] private List<ActivitySequence> randomSequences;
-
-    [SerializeField] private float startingDifficulty = 30;
-    [SerializeField] private float difficultyIncrement = 5;
-    [SerializeField] private float maxDifficulty = 100;
-    private float currentDifficulty;
     
     // [SerializeField] private List<ActivityProcessorChange> activityProcessorChanges;
 

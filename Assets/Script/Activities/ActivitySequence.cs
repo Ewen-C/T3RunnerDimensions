@@ -5,6 +5,6 @@ using Sirenix.OdinInspector;
 [CreateAssetMenu(fileName = "Sequence", menuName = "ProcGen/ActivitySequence", order = 0)]
 public class ActivitySequence : ScriptableObject
 {
-     [EnumPaging] [SerializeField] private List<Activity.ActivityTypeEnum> sequenceActivities = new();
-     public List<Activity.ActivityTypeEnum> GetSequence => sequenceActivities;
+     [EnumPaging] [SerializeField] private List<Activity.ActivityType> sequenceActivities = new();
+     public List<Activity.ActivityType> GetSequence => sequenceActivities;
 }

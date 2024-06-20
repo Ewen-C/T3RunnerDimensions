@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a96553e3811461f94978d92411aea39, type: 3}
-  m_Name: Pattern_1_XOO
+  m_Script: {fileID: 11500000, guid: f03251fc32604bc3b4184f75ad6f78bb, type: 3}
+  m_Name: Sequence_Mixed
   m_EditorClassIdentifier: 
-  typeEnum: 2
-  difficultyScore: 15
-  geometryPrefabs:
-  - {fileID: 2552108946675962218, guid: 55b4527ee8fa018449de7e533c3bd9be, type: 3}
+  sequenceActivities: 0500000005000000030000000400000005000000

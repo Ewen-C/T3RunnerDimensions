@@ -17,7 +17,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 568fdcc05912e7a418aea34435ccef34, type: 2}
+      objectReference: {fileID: 2100000, guid: 7d30a309b03531a4493727e5ba002d4f, type: 2}
     - target: {fileID: 2176585457571673992, guid: 674e5529517d8464e833907b282c72e8,
         type: 3}
       propertyPath: m_RootOrder
@@ -76,12 +76,12 @@ PrefabInstance:
     - target: {fileID: 3101293547657176479, guid: 674e5529517d8464e833907b282c72e8,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6371102343422877720, guid: 674e5529517d8464e833907b282c72e8,
         type: 3}
       propertyPath: m_Name
-      value: Pattern_OOO
+      value: Pattern_Start_0_Empty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
