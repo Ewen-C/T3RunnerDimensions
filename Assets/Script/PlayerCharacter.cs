@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,11 +17,13 @@ public class PlayerCharacter : MonoBehaviour
 
     public Material skybox_Red;
     public Material skybox_Blue;
-    
+    public Material baseRoad;
+
     void Start()
     {
         // Initialisation pour s assurer que l état initial est correct
         UpdateMaterialTransparency();
+        baseRoad.SetColor("_EmissionColor", Color.white);
     }
     
     private void OnTriggerEnter(Collider other)
@@ -67,10 +70,13 @@ public class PlayerCharacter : MonoBehaviour
         if (currentDimension == Dimension.DimensionA)
         {
             RenderSettings.skybox = skybox_Blue;
+            baseRoad.SetColor("_EmissionColor", Color.blue);
+
         }
         else if (currentDimension == Dimension.DimensionB)
         {
             RenderSettings.skybox = skybox_Red;
+            baseRoad.SetColor("_EmissionColor", Color.red);
         }
     }
 }
