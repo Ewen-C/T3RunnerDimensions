@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.008231545, g: 0.050231006, b: 0.2327899, a: 1}
+  m_IndirectSpecularColor: {r: 0.008231314, g: 0.050234206, b: 0.23280166, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -722,63 +722,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!1 &547433137
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 547433139}
-  - component: {fileID: 547433138}
-  - component: {fileID: 547433140}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &547433138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547433137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f07a53d9660e7040932c154d7231da3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &547433139
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547433137}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &547433140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547433137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c19bafb213888aa4c92e77a6c0e4f80b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &556566987
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,50 +797,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556566987}
   m_CullTransparentMesh: 1
---- !u!1 &578959947
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 578959949}
-  - component: {fileID: 578959948}
-  m_Layer: 0
-  m_Name: Activity Sequence Generator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &578959948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578959947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74fe3f1b8ab0475449a0e5ea4353f2e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &578959949
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578959947}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &663107295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -916,6 +815,11 @@ PrefabInstance:
       propertyPath: inputManager
       value: 
       objectReference: {fileID: 1704150800}
+    - target: {fileID: 6129545554881706570, guid: a13055eb8cc5d5b459628f1bfb5f302b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7695392482120996097, guid: a13055eb8cc5d5b459628f1bfb5f302b,
         type: 3}
       propertyPath: smoothTime
@@ -1398,16 +1302,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d3ffd76f6a5714fbedf8fb1d1317b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxProgression: 300
+  maxProgression: 50
   numGeneratedPatterns: 0
   firstActivities:
   - {fileID: 11400000, guid: a92a372ec47c1fb40b761c4610c7cf30, type: 2}
   - {fileID: 11400000, guid: a92a372ec47c1fb40b761c4610c7cf30, type: 2}
   - {fileID: 11400000, guid: 4aac63f068ad96242b9429653fd52cc0, type: 2}
-  - {fileID: 11400000, guid: a92a372ec47c1fb40b761c4610c7cf30, type: 2}
   randomActivities:
-  - activity: {fileID: 11400000, guid: f893076159c6c8b48a07cc872bc8fae7, type: 2}
-    weight: 2
+  - activity: {fileID: 11400000, guid: 4aac63f068ad96242b9429653fd52cc0, type: 2}
+    weight: 5
     curveEvolution:
       serializedVersion: 2
       m_Curve:
@@ -1416,89 +1319,16 @@ MonoBehaviour:
         value: 1
         inSlope: 0
         outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.74508667
-        value: 0.08987427
-        inSlope: -1.2215031
-        outSlope: 0.35448956
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.9833374
-        value: 0.17433167
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    maxCooldown: 1
-    currentCooldown: 0
-  - activity: {fileID: 11400000, guid: 5d3cac8ecc47f0e41a6d9709d009d2a8, type: 2}
-    weight: 2.5
-    curveEvolution:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0.0982666
-        value: -0.0020751953
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.314699
-        value: 0.30483085
-        inSlope: 1.5650618
-        outSlope: 1.5650618
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.55830157
-        value: 0.30213797
-        inSlope: 2.2032642
-        outSlope: 2.2032642
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.03772075
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.6958946
-        value: 0.337197
-        inSlope: 1.1234994
-        outSlope: 1.1234994
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.5626188
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.85358113
-        value: 0.31921592
-        inSlope: -0.37827796
-        outSlope: -0.37827796
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.6608948
-      - serializedVersion: 3
-        time: 0.9980774
-        value: 0.24394608
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0
@@ -1507,35 +1337,17 @@ MonoBehaviour:
       m_RotationOrder: 4
     maxCooldown: 1
     currentCooldown: 0
-  - activity: {fileID: 11400000, guid: 7b4467e8f6e6f1e49b17aa91e9056173, type: 2}
-    weight: 0.5
-    curveEvolution:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.9979248
-        value: 0.5731125
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    maxCooldown: 1
-    currentCooldown: 0
-  repetitionConstraints: []
+  patternConstraints:
+  - pattern: {fileID: 2552108946675962218, guid: ba94e2aaf347f1b428bb18fb65e19b61,
+      type: 3}
+    maxRepetitions: 2
+    constraintHistoryDepth: 5
+    forcedCooldown: 10
+  - pattern: {fileID: 2552108946675962218, guid: cb35126496b82e24283d8b18b7a60918,
+      type: 3}
+    maxRepetitions: 3
+    constraintHistoryDepth: 20
+    forcedCooldown: 20
 --- !u!114 &1071841214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1549,7 +1361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundMoveSpeed: 10
-  maxGrounds: 7
+  maxGrounds: 15
   patternRemovalDistance: 15
 --- !u!4 &1071841215
 Transform:
@@ -3009,8 +2821,6 @@ SceneRoots:
   - {fileID: 99133333}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 547433139}
-  - {fileID: 578959949}
   - {fileID: 1071841215}
   - {fileID: 1971064020}
   - {fileID: 663107295}
