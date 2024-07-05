@@ -5,7 +5,7 @@ using UnityEngine;
 public class Activity : ScriptableObject
 {
     [SerializeField] private GameObject[] geometryPrefabs;
-    private List<GameObject> disabledPatterns;
+    public List<GameObject> disabledPatterns = new(); // TODO - Bug : ne se réinitialise pas au début du jeu (virer le public après) 
     
     public GameObject GetGeoPrefabPublicRandom()
     {
@@ -14,9 +14,8 @@ public class Activity : ScriptableObject
         for (int i = 0; i < geometryPrefabs.Length; i++)
             if (!disabledPatterns.Contains(geometryPrefabs[i])) availablePatterns.Add(geometryPrefabs[i]);
 
-        // DecreaseCooldown();
-        
         if(availablePatterns.Count == 0) Debug.Log($"No patterns left in {name} !");
+        DecreaseCooldown();
         
         return availablePatterns[Random.Range(0, availablePatterns.Count)]; 
     }

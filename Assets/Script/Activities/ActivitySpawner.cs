@@ -41,7 +41,7 @@ public class ActivitySpawner : MonoBehaviour
         WeightedActivity rdActivity = GetRdWeightedActivity(currentProgression);
         rdActivity.SetCooldown();
         
-        // Todo? : cleanup activitySequence avec le constraintHistoryDepth max trouvé
+        // Todo? : cleanup activitySequence avec le historyCheck max trouvé
         // activitySequence.Add(rdActivity.ActPublic);
         foreach (WeightedActivity weightedActivity in randomActivities) weightedActivity.DecreaseCooldown();
         numGeneratedPatterns++;
@@ -91,6 +91,7 @@ public class ActivitySpawner : MonoBehaviour
     {
         foreach (ActivityPatternConstraint repConstraint in patternConstraints)
         {
+            Debug.Log($"repConstraint : {repConstraint}");
             if (repConstraint.PatternRepetitionsCheck(patternSequence))
                 newActivity.DisablePatternWithCooldown(repConstraint.TargetPattern, repConstraint.ForcedCooldown);
         }

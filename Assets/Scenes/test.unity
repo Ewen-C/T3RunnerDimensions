@@ -1335,19 +1335,14 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    maxCooldown: 1
+    maxCooldown: 0
     currentCooldown: 0
   patternConstraints:
-  - pattern: {fileID: 2552108946675962218, guid: ba94e2aaf347f1b428bb18fb65e19b61,
-      type: 3}
-    maxRepetitions: 2
-    constraintHistoryDepth: 5
-    forcedCooldown: 10
   - pattern: {fileID: 2552108946675962218, guid: cb35126496b82e24283d8b18b7a60918,
       type: 3}
-    maxRepetitions: 3
-    constraintHistoryDepth: 20
-    forcedCooldown: 20
+    historyCheck: 5
+    maxRepetitions: 2
+    forcedCooldown: 4
 --- !u!114 &1071841214
 MonoBehaviour:
   m_ObjectHideFlags: 0

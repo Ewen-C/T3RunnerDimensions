@@ -9,9 +9,9 @@ public class ActivityPatternConstraint
     [HorizontalGroup(100), LabelWidth(50)]
     [SerializeField] private GameObject pattern;
     [HorizontalGroup(100), LabelWidth(50)]
-    [SerializeField] private int maxRepetitions;
+    [SerializeField] private int historyCheck;
     [HorizontalGroup(100), LabelWidth(50)]
-    [SerializeField] private int constraintHistoryDepth;
+    [SerializeField] private int maxRepetitions;
     [HorizontalGroup(100), LabelWidth(50)]
     [SerializeField] private int forcedCooldown;
 
@@ -21,7 +21,7 @@ public class ActivityPatternConstraint
     // Check si une des constraintes s'applique
     public bool PatternRepetitionsCheck(List<GameObject> sequencePatterns)
     {
-        int skipIndex = Mathf.Max(0, sequencePatterns.Count - 1 - constraintHistoryDepth);
+        int skipIndex = Mathf.Max(0, sequencePatterns.Count - 1 - historyCheck);
         int samepatternCount = sequencePatterns.Skip(skipIndex).Count(x => x == pattern);
         
         return samepatternCount >= maxRepetitions;
