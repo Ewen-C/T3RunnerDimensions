@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +9,14 @@ public class ActivitySpawner : MonoBehaviour
     [SerializeField] private int maxProgression = 50; // Avancement des types de patterns avec les courbes
     [SerializeField, ReadOnly] private int numGeneratedPatterns; // Utilisé pour la progression
     
-    private List<Activity> activitySequence = new(); // Patterns générés et spawnés
+    // private List<Activity> activitySequence = new(); // Activités des patterns spawnés
+    private List<GameObject> patternSequence = new(); // Prefabs des patterns spawnés
     
     [SerializeField] private List<Activity> firstActivities;
     [SerializeField] private List<WeightedActivity> randomActivities;
-    [SerializeField] private List<ActivityRepetitionConstraint> repetitionConstraints;
+    [SerializeField] private List<ActivityPatternConstraint> patternConstraints;
+
+    public List<GameObject> disabledPatterns = new(); // TODO - Bug : ne se réinitialise pas au début du jeu (virer le public après) 
 
     public List<GameObject> SpawnFirstPatterns(float currentPositionZ)
     {
@@ -40,11 +42,9 @@ public class ActivitySpawner : MonoBehaviour
         WeightedActivity rdActivity = GetRdWeightedActivity(currentProgression);
         rdActivity.SetCooldown();
         
-        activitySequence.Add(rdActivity.ActPublic);
+        // Todo? : cleanup activitySequence avec le historyCheck max trouvé
+        // activitySequence.Add(rdActivity.ActPublic);
         foreach (WeightedActivity weightedActivity in randomActivities) weightedActivity.DecreaseCooldown();
-        ApplyRepetitionConstraints();
-        
-        // Todo : cleanup activitySequence avec le constraintHistoryDepth max trouvé
         numGeneratedPatterns++;
         
         return rdActivity.ActPublic;
@@ -52,10 +52,14 @@ public class ActivitySpawner : MonoBehaviour
 
     public GameObject GenerateSequenceGeometry(Activity newActivity, Vector3 patternPositionZ)
     {
-        GameObject newActivityPrefab = newActivity.GetGeoPrefabPublicRandom();
+        GameObject newActivityPrefab = newActivity.GetGeoPrefabPublicRandom(disabledPatterns);
+        patternSequence.Add(newActivityPrefab);
+        
+        DecreasePatternCooldown();
+        ApplyRepetitionConstraints();
+        
         float newActivityZSize = newActivityPrefab.GetComponentInChildren<MeshRenderer>().transform.localScale.z;
         Vector3 newActivityPos = patternPositionZ + new Vector3(0, 0, newActivityZSize/2);
-        Debug.Log($"newActivity : {newActivity.name} - newActivityZSize : {newActivityZSize} - patternPositionZ : {patternPositionZ} - newActivityPos : {newActivityPos}");
         return Instantiate(newActivityPrefab, newActivityPos, Quaternion.identity);
     }
 
@@ -81,15 +85,27 @@ public class ActivitySpawner : MonoBehaviour
         return randomActivities.Last();
     }
 
+
+    private void DecreasePatternCooldown()
+    {
+        for (int i = 0; i < disabledPatterns.Count; i++)
+        {
+            if (disabledPatterns[i].GetComponent<ActivityPattern>().DecrementCooldownAndCheckZero())
+                disabledPatterns.RemoveAt(i);
+        }
+    }
+    
     // Tries to apply forced cooldown after pattern generation
+    
     private void ApplyRepetitionConstraints()
     {
-        foreach (ActivityRepetitionConstraint repConstraint in repetitionConstraints)
+        foreach (ActivityPatternConstraint repConstraint in patternConstraints)
         {
-            if (!repConstraint.IsConstraintActivityAllowed(activitySequence))
+            Debug.Log($"repConstraint : {repConstraint}");
+            if (repConstraint.PatternRepetitionsCheck(patternSequence) && !disabledPatterns.Contains(repConstraint.TargetPattern))
             {
-                randomActivities.First(x => x.ActPublic == repConstraint.ActPublic)
-                    .SetCustomCooldown(repConstraint.ForcedCooldown);
+                repConstraint.TargetPattern.GetComponentInChildren<ActivityPattern>().SetCooldown(repConstraint.ForcedCooldown);
+                disabledPatterns.Add(repConstraint.TargetPattern);
             }
         }
     }
