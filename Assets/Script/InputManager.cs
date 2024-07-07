@@ -10,9 +10,9 @@ public class InputManager : MonoBehaviour
     public delegate void DimensionChangeHandler();
     public event DimensionChangeHandler OnDimensionChange;
     
-    public Image leftControlArea;
-    public Image rightControlArea;
-    public Image changeDimControlArea;
+    [SerializeField] private Image leftControlArea;
+    [SerializeField] private Image rightControlArea;
+    [SerializeField] private Image changeDimControlArea;
     
     private float moveDirection; // 0 = pas de mouvement, 1 = droite, -1 = gauche
     

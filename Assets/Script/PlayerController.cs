@@ -11,15 +11,12 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private GameObject player;
     [SerializeField] private InputManager inputManager;
+    [SerializeField] private AnimationCurve curve;
 
     private Rigidbody rb;
     private float currentSpeed; // Vitesse actuelle du personnage
     private float targetSpeed; // Vitesse cible basée sur l entrée du joueur
     private float velocityX; // Utilisé pour le smoothing de la vitesse
-
-
-    [SerializeField] private AnimationCurve curve;
-    
     
     public float GetCurrentSpeed()
     {
@@ -65,7 +62,6 @@ public class PlayerController : MonoBehaviour
     
     private void LeanController()       // Application de la rotation pour l inclinaison
     {
-        // float lean = (currentSpeed / maxSpeed) * maxLeanAngle;
         float lean = curve.Evaluate(currentSpeed / maxSpeed) * maxLeanAngle;
         rb.transform.rotation = Quaternion.Euler(0, 0, -lean);
     }
