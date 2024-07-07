@@ -1343,6 +1343,7 @@ MonoBehaviour:
     historyCheck: 5
     maxRepetitions: 2
     forcedCooldown: 4
+  disabledPatterns: []
 --- !u!114 &1071841214
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ public class ActivityPattern : MonoBehaviour
 {
     [SerializeField] private Collider boundsCollider;
     public Bounds Bounds => boundsCollider.bounds;
-    private int cooldown;
+    [SerializeField] private int cooldown = 0;
     
     public void SetCooldown(int newCooldown) => cooldown = newCooldown;
     public bool DecrementCooldownAndCheckZero()

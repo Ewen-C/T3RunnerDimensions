@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +15,8 @@ public class ActivitySpawner : MonoBehaviour
     [SerializeField] private List<Activity> firstActivities;
     [SerializeField] private List<WeightedActivity> randomActivities;
     [SerializeField] private List<ActivityPatternConstraint> patternConstraints;
+
+    public List<GameObject> disabledPatterns = new(); // TODO - Bug : ne se réinitialise pas au début du jeu (virer le public après) 
 
     public List<GameObject> SpawnFirstPatterns(float currentPositionZ)
     {
@@ -51,11 +52,11 @@ public class ActivitySpawner : MonoBehaviour
 
     public GameObject GenerateSequenceGeometry(Activity newActivity, Vector3 patternPositionZ)
     {
-        GameObject newActivityPrefab = newActivity.GetGeoPrefabPublicRandom();
+        GameObject newActivityPrefab = newActivity.GetGeoPrefabPublicRandom(disabledPatterns);
         patternSequence.Add(newActivityPrefab);
         
-        foreach (WeightedActivity weightedActivity in randomActivities) weightedActivity.ActPublic.DecreaseCooldown();
-        ApplyRepetitionConstraints(newActivity);
+        DecreasePatternCooldown();
+        ApplyRepetitionConstraints();
         
         float newActivityZSize = newActivityPrefab.GetComponentInChildren<MeshRenderer>().transform.localScale.z;
         Vector3 newActivityPos = patternPositionZ + new Vector3(0, 0, newActivityZSize/2);
@@ -84,16 +85,28 @@ public class ActivitySpawner : MonoBehaviour
         return randomActivities.Last();
     }
 
+
+    private void DecreasePatternCooldown()
+    {
+        for (int i = 0; i < disabledPatterns.Count; i++)
+        {
+            if (disabledPatterns[i].GetComponent<ActivityPattern>().DecrementCooldownAndCheckZero())
+                disabledPatterns.RemoveAt(i);
+        }
+    }
     
     // Tries to apply forced cooldown after pattern generation
     
-    private void ApplyRepetitionConstraints(Activity newActivity)
+    private void ApplyRepetitionConstraints()
     {
         foreach (ActivityPatternConstraint repConstraint in patternConstraints)
         {
             Debug.Log($"repConstraint : {repConstraint}");
-            if (repConstraint.PatternRepetitionsCheck(patternSequence))
-                newActivity.DisablePatternWithCooldown(repConstraint.TargetPattern, repConstraint.ForcedCooldown);
+            if (repConstraint.PatternRepetitionsCheck(patternSequence) && !disabledPatterns.Contains(repConstraint.TargetPattern))
+            {
+                repConstraint.TargetPattern.GetComponentInChildren<ActivityPattern>().SetCooldown(repConstraint.ForcedCooldown);
+                disabledPatterns.Add(repConstraint.TargetPattern);
+            }
         }
     }
 }
