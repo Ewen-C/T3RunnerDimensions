@@ -16,7 +16,7 @@ public class ActivitySpawner : MonoBehaviour
     [SerializeField] private List<WeightedActivity> randomActivities;
     [SerializeField] private List<ActivityPatternConstraint> patternConstraints;
 
-    public List<GameObject> disabledPatterns = new(); // TODO - Bug : ne se réinitialise pas au début du jeu (virer le public après) 
+    private List<GameObject> disabledPatterns = new(); // Patterns désactivés, en cooldown 
 
     public List<GameObject> SpawnFirstPatterns(float currentPositionZ)
     {
@@ -24,7 +24,7 @@ public class ActivitySpawner : MonoBehaviour
 
         for (int i = 0; i < firstActivities.Count; i++)
         {
-            firstPatternsPrefabs.Add(GenerateSequenceGeometry(firstActivities[i], new Vector3(0, 0, currentPositionZ)));
+            firstPatternsPrefabs.Add(GenerateActivityPrefab(firstActivities[i], new Vector3(0, 0, currentPositionZ)));
             currentPositionZ += firstPatternsPrefabs[i].GetComponentInChildren<MeshRenderer>().transform.localScale.z;
         }
         
@@ -33,10 +33,10 @@ public class ActivitySpawner : MonoBehaviour
     
     public GameObject SpawnActivity(float patternPositionZ)
     {
-        return GenerateSequenceGeometry(GenerateSequence(), new Vector3(0, 0, patternPositionZ));
+        return GenerateActivityPrefab(GenerateActivity(), new Vector3(0, 0, patternPositionZ));
     }
 
-    public Activity GenerateSequence()
+    public Activity GenerateActivity()
     {
         float currentProgression = numGeneratedPatterns < maxProgression ? (float) numGeneratedPatterns / maxProgression : 1;
         WeightedActivity rdActivity = GetRdWeightedActivity(currentProgression);
@@ -50,7 +50,7 @@ public class ActivitySpawner : MonoBehaviour
         return rdActivity.ActPublic;
     }
 
-    public GameObject GenerateSequenceGeometry(Activity newActivity, Vector3 patternPositionZ)
+    public GameObject GenerateActivityPrefab(Activity newActivity, Vector3 patternPositionZ)
     {
         GameObject newActivityPrefab = newActivity.GetGeoPrefabPublicRandom(disabledPatterns);
         patternSequence.Add(newActivityPrefab);
