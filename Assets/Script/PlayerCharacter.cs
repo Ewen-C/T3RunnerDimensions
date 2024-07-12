@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
@@ -18,6 +19,7 @@ public class PlayerCharacter : MonoBehaviour
     public Material skybox_Red;
     public Material skybox_Blue;
     public Material baseRoad;
+    [SerializeField] private bool debugMode;
 
     void Start()
     {
@@ -28,6 +30,8 @@ public class PlayerCharacter : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        if (debugMode) return;
+        
         if (other.CompareTag("ObstacleDimension"))
         {
             Debug.Log("HIT Dimension!");

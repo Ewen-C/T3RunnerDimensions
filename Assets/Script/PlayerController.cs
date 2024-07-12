@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private float targetSpeed; // Vitesse cible basée sur l entrée du joueur
     private float velocityX; // Utilisé pour le smoothing de la vitesse
     
+    
+    
     public float GetCurrentSpeed()
     {
         return currentSpeed;
@@ -42,6 +44,18 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
+        //Debug
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            targetSpeed = -maxSpeed;
+        }
+        else  if (Input.GetKey(KeyCode.RightArrow))
+        {
+            targetSpeed = maxSpeed;
+        }
+        
+        
+        
         // Transition en douceur de la vitesse actuelle vers la vitesse cible
         currentSpeed = targetSpeed != 0f ? Mathf.SmoothDamp(currentSpeed, targetSpeed, ref velocityX, smoothTime) :
             // Ralentissement progressif si aucune entrée n est détectée
