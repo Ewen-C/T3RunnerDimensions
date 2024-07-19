@@ -9,15 +9,16 @@ public class ActivitySpawner : MonoBehaviour
     [SerializeField] private int maxProgression = 50; // Avancement des types de patterns avec les courbes
     [SerializeField, ReadOnly] private int numGeneratedPatterns; // Utilisé pour la progression
     
-    // private List<Activity> activitySequence = new(); // Activités des patterns spawnés
-    private List<GameObject> patternSequence = new(); // Prefabs des patterns spawnés
+    private List<GameObject> patternsSpawned = new();
+    private List<GameObject> disabledPatterns = new(); // Patterns désactivés, en cooldown 
+
+    [SerializeField] private ActivitySequence firstSequence;
+    [SerializeField] private List<ActivitySequence> randomSequences;
     
     [SerializeField] private List<Activity> firstActivities;
     [SerializeField] private List<WeightedActivity> randomActivities;
     [SerializeField] private List<ActivityPatternConstraint> patternConstraints;
-
-    private List<GameObject> disabledPatterns = new(); // Patterns désactivés, en cooldown 
-
+    
     public List<GameObject> SpawnFirstPatterns(float currentPositionZ)
     {
         List<GameObject> firstPatternsPrefabs = new List<GameObject>();
@@ -30,20 +31,48 @@ public class ActivitySpawner : MonoBehaviour
         
         return firstPatternsPrefabs;
     }
-    
-    public GameObject SpawnActivity(float patternPositionZ)
+
+    public List<GameObject> SpawnFirstSequence(float patternPositionZ)
     {
-        return GenerateActivityPrefab(GenerateActivity(), new Vector3(0, 0, patternPositionZ));
+        List<GameObject> firstPatterns = new();
+
+        foreach (Activity.ActivityType sequenceActivityType in firstSequence.GetSequenceActivities)
+        {
+            firstPatterns.Add(SpawnActivity(patternPositionZ, sequenceActivityType));
+        }
+        
+        return firstPatterns;
     }
 
-    public Activity GenerateActivity()
+    public List<GameObject> SpawnSequence(float patternPositionZ)
+    {
+        List<GameObject> newPatterns = new();
+        ActivitySequence rdSequence = randomSequences[Random.Range(0, randomSequences.Count)];
+
+        foreach (Activity.ActivityType sequenceActivityType in rdSequence.GetSequenceActivities)
+        { 
+            newPatterns.Add(SpawnActivity(patternPositionZ, sequenceActivityType));
+        }
+        
+        return newPatterns;
+    }
+    
+    public GameObject SpawnActivity(float patternPositionZ, Activity.ActivityType type)
+    {
+      // Activity newSequence = GenerateSequence();
+      // ApplyProcessorChanges();
+      // return GenerateSequenceGeometry(newSequence, new Vector3(0, 0, patternPositionZ));
+  
+        return GenerateActivityPrefab(GenerateActivity(type), new Vector3(0, 0, patternPositionZ));
+    }
+
+    public Activity GenerateActivity(Activity.ActivityType type)
     {
         float currentProgression = numGeneratedPatterns < maxProgression ? (float) numGeneratedPatterns / maxProgression : 1;
         WeightedActivity rdActivity = GetRdWeightedActivity(currentProgression);
         rdActivity.SetCooldown();
         
-        // Todo? : cleanup activitySequence avec le historyCheck max trouvé
-        // activitySequence.Add(rdActivity.ActPublic);
+        // Todo? : cleanup patternsSpawned avec le historyCheck max trouvé
         foreach (WeightedActivity weightedActivity in randomActivities) weightedActivity.DecreaseCooldown();
         numGeneratedPatterns++;
         
@@ -53,7 +82,7 @@ public class ActivitySpawner : MonoBehaviour
     public GameObject GenerateActivityPrefab(Activity newActivity, Vector3 patternPositionZ)
     {
         GameObject newActivityPrefab = newActivity.GetGeoPrefabPublicRandom(disabledPatterns);
-        patternSequence.Add(newActivityPrefab);
+        patternsSpawned.Add(newActivityPrefab);
         
         DecreasePatternCooldown();
         ApplyRepetitionConstraints();
@@ -102,11 +131,17 @@ public class ActivitySpawner : MonoBehaviour
         foreach (ActivityPatternConstraint repConstraint in patternConstraints)
         {
             Debug.Log($"repConstraint : {repConstraint}");
-            if (repConstraint.PatternRepetitionsCheck(patternSequence) && !disabledPatterns.Contains(repConstraint.TargetPattern))
+            if (repConstraint.PatternRepetitionsCheck(patternsSpawned) && !disabledPatterns.Contains(repConstraint.TargetPattern))
             {
                 repConstraint.TargetPattern.GetComponentInChildren<ActivityPattern>().SetCooldown(repConstraint.ForcedCooldown);
                 disabledPatterns.Add(repConstraint.TargetPattern);
             }
         }
+    }
+
+
+    private void ApplyProcessorChanges()
+    {
+        
     }
 }

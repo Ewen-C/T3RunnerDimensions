@@ -12,6 +12,11 @@ public class ActivityManager : MonoBehaviour
     private ActivitySpawner activitySpawner;
     private List<GameObject> spawnedPatterns = new(); // Prefabs des patterns
     
+    [SerializeField] private float startingPatternDifficulty = 30;
+    [SerializeField] private float patternDifficultyIncrement = 5;
+    [SerializeField] private float maxPatternDifficulty = 100;
+    private float currentPatternDifficulty;
+    
     private void Start()
     {
         playerPositionZ = GameObject.FindGameObjectWithTag("Player").transform.position.z;
