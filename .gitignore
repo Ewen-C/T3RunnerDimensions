@@ -70,5 +70,4 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-Assets/Graphics/Materials/RedDimensionA.mat
-Assets/Graphics/Materials/BlueDimensionB.mat
+Assets/Materials/BlueDimensionB.mat
