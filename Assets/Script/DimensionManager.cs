@@ -14,7 +14,7 @@ public class DimensionManager : MonoBehaviour
     [SerializeField] private Material skyboxRed;
     [SerializeField] private Material baseRoad;
 
-    [SerializeField] private float vfxVitesseSpeed = 250;
+    [SerializeField] private float vfxVitesseSpawnSpeed = 250;
     [SerializeField] private VisualEffect vfxVitesseBlue;
     [SerializeField] private VisualEffect vfxVitesseRed;
 
@@ -59,19 +59,21 @@ public class DimensionManager : MonoBehaviour
         {
             RenderSettings.skybox = skyboxBlue;
             baseRoad.SetColor("_EmissionColor", Color.blue);
+            RenderSettings.fogColor = Color.cyan;
 
         }
         else
         {
             RenderSettings.skybox = skyboxRed;
             baseRoad.SetColor("_EmissionColor", Color.red);
+            RenderSettings.fogColor = Color.magenta;
         }
     }
 
     private void UpdateVfx()
     {
-        vfxVitesseBlue.SetFloat("vitesse", currentDimension == Dimension.DimensionA ? vfxVitesseSpeed : 0);
-        vfxVitesseRed.SetFloat("vitesse", currentDimension == Dimension.DimensionB ? vfxVitesseSpeed : 0);
+        vfxVitesseBlue.SetFloat("vitesse", currentDimension == Dimension.DimensionA ? vfxVitesseSpawnSpeed : 0);
+        vfxVitesseRed.SetFloat("vitesse", currentDimension == Dimension.DimensionB ? vfxVitesseSpawnSpeed : 0);
     }
 
     private void UpdateShaders()
