@@ -32,6 +32,8 @@ public class PlayerCharacter : MonoBehaviour
     public void UpdateDimension(DimensionManager.Dimension newDimension)
     {
         gameObject.layer = (newDimension == DimensionManager.Dimension.DimensionA) ? dimensionALayer : dimensionBLayer;
+        
+        if(!renderer) renderer = GetComponent<Renderer>();
         renderer.material = (newDimension == DimensionManager.Dimension.DimensionA) ? materialPlayerA : materialPlayerB;
 
         // Debug.Log("Switched to Dimension" + (currentDimension == Dimension.DimensionA ? "A" : " B"));

@@ -3,16 +3,20 @@ using UnityEngine.VFX;
 
 public class DimensionManager : MonoBehaviour
 {
+    // Dimension A -> blue, Dimension B -> Red / Pink
     public enum Dimension { DimensionA, DimensionB }
     private Dimension currentDimension = Dimension.DimensionA;
     
-    [SerializeField] private Material materialObstaclesA;
-    [SerializeField] private Material materialObstaclesB;
+    [SerializeField] private Material materialObstaclesBlue;
+    [SerializeField] private Material materialObstaclesRed;
     
-    [SerializeField] private Material skybox_Red;
-    [SerializeField] private Material skybox_Blue;
+    [SerializeField] private Material skyboxBlue;
+    [SerializeField] private Material skyboxRed;
     [SerializeField] private Material baseRoad;
-    [SerializeField] private VisualEffect vfxVitesse;
+
+    [SerializeField] private float vfxVitesseSpeed = 250;
+    [SerializeField] private VisualEffect vfxVitesseBlue;
+    [SerializeField] private VisualEffect vfxVitesseRed;
 
     [SerializeField] private PlayerCharacter playerCharacter;
     
@@ -33,40 +37,41 @@ public class DimensionManager : MonoBehaviour
         playerCharacter.UpdateDimension(currentDimension);
         UpdateObtaclesMaterial();
         UpdateSkybox();
-        UpdateHdri();
+        UpdateVfx();
         UpdateShaders();
     }
 
     private void UpdateObtaclesMaterial()
     {
-        Color currentColorA = materialObstaclesA.GetColor(Shader.PropertyToID("_BaseColor"));
-        Color currentColorB = materialObstaclesB.GetColor(Shader.PropertyToID("_BaseColor"));
+        Color currentColorA = materialObstaclesBlue.GetColor(Shader.PropertyToID("_BaseColor"));
+        Color currentColorB = materialObstaclesRed.GetColor(Shader.PropertyToID("_BaseColor"));
 
         currentColorA.a = currentDimension == Dimension.DimensionA ? 0.8f : 0.1f;
         currentColorB.a = currentDimension == Dimension.DimensionB ? 0.8f : 0.1f;
         
-        materialObstaclesA.SetColor(Shader.PropertyToID("_BaseColor"), currentColorA);
-        materialObstaclesB.SetColor(Shader.PropertyToID("_BaseColor"), currentColorB);
+        materialObstaclesBlue.SetColor(Shader.PropertyToID("_BaseColor"), currentColorA);
+        materialObstaclesRed.SetColor(Shader.PropertyToID("_BaseColor"), currentColorB);
     }
 
     private void UpdateSkybox()
     {
         if (currentDimension == Dimension.DimensionA)
         {
-            RenderSettings.skybox = skybox_Blue;
+            RenderSettings.skybox = skyboxBlue;
             baseRoad.SetColor("_EmissionColor", Color.blue);
 
         }
         else
         {
-            RenderSettings.skybox = skybox_Red;
+            RenderSettings.skybox = skyboxRed;
             baseRoad.SetColor("_EmissionColor", Color.red);
         }
     }
 
-    private void UpdateHdri()
+    private void UpdateVfx()
     {
-        
+        vfxVitesseBlue.SetFloat("vitesse", currentDimension == Dimension.DimensionA ? vfxVitesseSpeed : 0);
+        vfxVitesseRed.SetFloat("vitesse", currentDimension == Dimension.DimensionB ? vfxVitesseSpeed : 0);
     }
 
     private void UpdateShaders()

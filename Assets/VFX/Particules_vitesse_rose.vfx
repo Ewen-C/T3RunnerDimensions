@@ -19,8 +19,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 140
     y: -662
-    width: 3047
-    height: 2825
+    width: 3046
+    height: 2798
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
       m_SerializableObject: 500
-    min: 100
+    min: 0
     max: 1000
     enumValues: []
     descendantCount: 0
@@ -2959,7 +2959,7 @@ MonoBehaviour:
     m_Type:
       m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-    m_SerializableObject: 100
+    m_SerializableObject: 0
   m_Max:
     m_Type:
       m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
@@ -5989,9 +5989,7 @@ MonoBehaviour:
   m_Tooltip: 
   m_Nodes:
   - m_Id: 0
-    linkedSlots:
-    - outputSlot: {fileID: 8926484042661615087}
-      inputSlot: {fileID: 8926484042661615031}
+    linkedSlots: []
     position: {x: 2577.3335, y: 1101.3333}
     expandedSlots: []
     expanded: 0
