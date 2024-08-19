@@ -8,17 +8,19 @@ public class PlayerController : MonoBehaviour
     public float minX = -5f;  // Limite minimale sur l axe x
     public float maxX = 5f;   // Limite maximale sur l axe x
     public float maxLeanAngle = 30f; // Angle maximal inclinaison
+    private bool gameOver = false;
     
     [SerializeField] private GameObject player;
     [SerializeField] private InputManager inputManager;
     [SerializeField] private AnimationCurve curve;
 
     private Rigidbody rb;
+    private PlayerCharacter character;
     private float currentSpeed; // Vitesse actuelle du personnage
     private float targetSpeed; // Vitesse cible basée sur l entrée du joueur
     private float velocityX; // Utilisé pour le smoothing de la vitesse
     
-    
+    [SerializeField] private DimensionManager dimensionManager;
     
     public float GetCurrentSpeed()
     {
@@ -28,18 +30,30 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = player.GetComponent<Rigidbody>();
+        character = player.GetComponent<PlayerCharacter>();
         inputManager.OnMoveDirectionChanged += HandleMoveDirectionChanged;
         inputManager.OnDimensionChange += HandleDimensionChange;
+    }
+
+    public void UpdateGameOver(bool newGameOver)
+    {
+        gameOver = newGameOver;
+
+        if (gameOver)
+        {
+            inputManager.OnMoveDirectionChanged -= HandleMoveDirectionChanged;
+            inputManager.OnDimensionChange -= HandleDimensionChange;
+        }
     }
     
     private void HandleMoveDirectionChanged(float direction)
     {
-        targetSpeed  = direction * maxSpeed;
+        targetSpeed = direction * maxSpeed;
     }
     
     private void HandleDimensionChange()
     {
-        player.GetComponent<PlayerCharacter>().SwitchDimension();
+        dimensionManager.SwitchDimension();
     }
     
     private void Update()
@@ -78,14 +92,5 @@ public class PlayerController : MonoBehaviour
     {
         float lean = curve.Evaluate(currentSpeed / maxSpeed) * maxLeanAngle;
         rb.transform.rotation = Quaternion.Euler(0, 0, -lean);
-    }
-
-    private void OnDestroy()
-    {
-        if (inputManager != null)
-        {
-            inputManager.OnMoveDirectionChanged -= HandleMoveDirectionChanged;
-            inputManager.OnDimensionChange -= HandleDimensionChange;
-        }
     }
 }
