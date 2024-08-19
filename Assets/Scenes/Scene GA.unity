@@ -2644,9 +2644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f07a53d9660e7040932c154d7231da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 275716838}
-  scoreToAdd: 20
-  secondForScore: 1
 --- !u!4 &547433139
 Transform:
   m_ObjectHideFlags: 0
