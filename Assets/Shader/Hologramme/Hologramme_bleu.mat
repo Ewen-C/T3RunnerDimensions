@@ -63,5 +63,5 @@ Material:
     - _Couleur_D1: {r: 0, g: 15.018974, b: 15.018974, a: 1}
     - _Couleur_D2: {r: 0, g: 0, b: 0, a: 1}
     - _Couleur_principal: {r: 2.9960783, g: 2.9960783, b: 2.9960783, a: 0}
-    - _Tiling: {r: 1, g: 36.7, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 4, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -142,8 +142,8 @@ VisualEffectResource:
       lightProbeUsage: 0
     m_CullingFlags: 3
     m_UpdateMode: 0
-    m_PreWarmDeltaTime: 0.05
-    m_PreWarmStepCount: 0
+    m_PreWarmDeltaTime: 0.24
+    m_PreWarmStepCount: 25
     m_InitialEventName: OnPlay
     m_InstancingMode: 0
     m_InstancingCapacity: 64
@@ -5989,9 +5989,7 @@ MonoBehaviour:
   m_Tooltip: 
   m_Nodes:
   - m_Id: 0
-    linkedSlots:
-    - outputSlot: {fileID: 8926484042661615087}
-      inputSlot: {fileID: 8926484042661615031}
+    linkedSlots: []
     position: {x: 2577.3335, y: 1101.3333}
     expandedSlots: []
     expanded: 0
