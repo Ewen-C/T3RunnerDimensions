@@ -106,8 +106,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.8839843, y: 3.0427492, z: 6.4770365}
-  m_Center: {x: 0, y: 0.5213746, z: -2.2385182}
+  m_Size: {x: 1.75, y: 3, z: 5}
+  m_Center: {x: 0, y: 0.52, z: -2}
 --- !u!54 &7695392482120996096
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -188,6 +188,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  dimensionManager: {fileID: 0}
 --- !u!114 &8315557127008029541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,14 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab98915077156c4d8c327f55b82edb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitText: {fileID: 0}
-  feedbackPrefab: {fileID: 4214707189250856527, guid: ccde2f619c642a3489d3dfb2a592184c,
-    type: 3}
-  displayTime: 0.5
   dimensionALayer: 10
   dimensionBLayer: 11
-  materialDimensionA: {fileID: 2100000, guid: b7ea314925401c145b7e1656b8419c91, type: 2}
-  materialDimensionB: {fileID: 2100000, guid: a0760f902e4a98845a884fb8b053ad89, type: 2}
-  materialObstaclesA: {fileID: 2100000, guid: a6043aa8b9f65f84eaeb04b01c158432, type: 2}
-  materialObstaclesB: {fileID: 2100000, guid: 6999cf1a10290ae489c222b644547b67, type: 2}
-  currentDimension: 0
+  materialPlayerA: {fileID: 0}
+  materialPlayerB: {fileID: 0}
+  debugMode: 0

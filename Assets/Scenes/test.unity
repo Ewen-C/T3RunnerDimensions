@@ -1001,7 +1001,7 @@ PrefabInstance:
     - target: {fileID: 6129545554881706570, guid: a13055eb8cc5d5b459628f1bfb5f302b,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7695392482120996097, guid: a13055eb8cc5d5b459628f1bfb5f302b,
         type: 3}
@@ -2661,9 +2661,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f93d652948c3af4180c8cee5bc386fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialObstaclesBlue: {fileID: 2100000, guid: 6999cf1a10290ae489c222b644547b67,
+  meshPrefabObstacleBlue: {fileID: 1019733221894935833, guid: 97b1cb90306414d45aeccf4c7e275b8b,
+    type: 3}
+  meshPrefabObstacleRed: {fileID: 1019733221894935833, guid: 729a5c176457dbc4db3bee09b4ebdbbf,
+    type: 3}
+  materialObstaclesBlueSolid: {fileID: 2100000, guid: 0a9b745540c060344a0d7c206055c77e,
     type: 2}
-  materialObstaclesRed: {fileID: 2100000, guid: a6043aa8b9f65f84eaeb04b01c158432,
+  materialObstaclesBlueHolo: {fileID: 2100000, guid: 344b72cb6a7052c46ad922e9a619f4fa,
+    type: 2}
+  materialObstaclesRedSolid: {fileID: 2100000, guid: 6ca385b80becd404294d64df52904003,
+    type: 2}
+  materialObstaclesRedHolo: {fileID: 2100000, guid: a9c5a6383783aaa47a1c7e3cd04a9c00,
     type: 2}
   skyboxBlue: {fileID: 2100000, guid: 82348416de1b3974d9eb989a8bd73deb, type: 2}
   skyboxRed: {fileID: 2100000, guid: 314e99852feff6e40b1b4ffb8f420352, type: 2}

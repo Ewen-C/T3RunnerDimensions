@@ -6,9 +6,14 @@ public class DimensionManager : MonoBehaviour
     // Dimension A -> blue, Dimension B -> Red / Pink
     public enum Dimension { DimensionA, DimensionB }
     private Dimension currentDimension = Dimension.DimensionA;
+
+    [SerializeField] private MeshRenderer meshPrefabObstacleBlue;
+    [SerializeField] private MeshRenderer meshPrefabObstacleRed;
     
-    [SerializeField] private Material materialObstaclesBlue;
-    [SerializeField] private Material materialObstaclesRed;
+    [SerializeField] private Material materialObstaclesBlueSolid;
+    [SerializeField] private Material materialObstaclesBlueHolo;
+    [SerializeField] private Material materialObstaclesRedSolid;
+    [SerializeField] private Material materialObstaclesRedHolo;
     
     [SerializeField] private Material skyboxBlue;
     [SerializeField] private Material skyboxRed;
@@ -35,22 +40,26 @@ public class DimensionManager : MonoBehaviour
     private void ApplyDimensionChanges()
     {
         playerCharacter.UpdateDimension(currentDimension);
-        UpdateObtaclesMaterial();
+        UpdateObtacles();
         UpdateSkybox();
         UpdateVfx();
-        UpdateShaders();
     }
 
-    private void UpdateObtaclesMaterial()
+    private void UpdateObtacles()
     {
-        Color currentColorA = materialObstaclesBlue.GetColor(Shader.PropertyToID("_BaseColor"));
-        Color currentColorB = materialObstaclesRed.GetColor(Shader.PropertyToID("_BaseColor"));
+        if (currentDimension == Dimension.DimensionA)
+        {
+            meshPrefabObstacleBlue.material = materialObstaclesBlueSolid;
+            meshPrefabObstacleRed.material = materialObstaclesRedHolo;
+        }
+        else
+        {
+            meshPrefabObstacleBlue.material = materialObstaclesRedSolid;
+            meshPrefabObstacleRed.material = materialObstaclesBlueHolo;
+        }
 
-        currentColorA.a = currentDimension == Dimension.DimensionA ? 0.8f : 0.1f;
-        currentColorB.a = currentDimension == Dimension.DimensionB ? 0.8f : 0.1f;
-        
-        materialObstaclesBlue.SetColor(Shader.PropertyToID("_BaseColor"), currentColorA);
-        materialObstaclesRed.SetColor(Shader.PropertyToID("_BaseColor"), currentColorB);
+        meshPrefabObstacleBlue.GetComponentInChildren<VisualEffect>().Play();
+        meshPrefabObstacleRed.GetComponentInChildren<VisualEffect>().Play();
     }
 
     private void UpdateSkybox()
@@ -74,10 +83,5 @@ public class DimensionManager : MonoBehaviour
     {
         vfxVitesseBlue.SetFloat("vitesse", currentDimension == Dimension.DimensionA ? vfxVitesseSpawnSpeed : 0);
         vfxVitesseRed.SetFloat("vitesse", currentDimension == Dimension.DimensionB ? vfxVitesseSpawnSpeed : 0);
-    }
-
-    private void UpdateShaders()
-    {
-        
     }
 }
