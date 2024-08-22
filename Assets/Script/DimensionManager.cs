@@ -49,17 +49,17 @@ public class DimensionManager : MonoBehaviour
     {
         if (currentDimension == Dimension.DimensionA)
         {
-            meshPrefabObstacleBlue.material = materialObstaclesBlueSolid;
-            meshPrefabObstacleRed.material = materialObstaclesRedHolo;
+            meshPrefabObstacleBlue.material = materialObstaclesBlueHolo;
+            meshPrefabObstacleRed.material = materialObstaclesRedSolid;
         }
         else
         {
-            meshPrefabObstacleBlue.material = materialObstaclesRedSolid;
-            meshPrefabObstacleRed.material = materialObstaclesBlueHolo;
+            meshPrefabObstacleBlue.material = materialObstaclesBlueSolid;
+            meshPrefabObstacleRed.material = materialObstaclesRedHolo;
         }
 
-        meshPrefabObstacleBlue.GetComponentInChildren<VisualEffect>().Play();
-        meshPrefabObstacleRed.GetComponentInChildren<VisualEffect>().Play();
+        // meshPrefabObstacleBlue.GetComponentInChildren<VisualEffect>().Play();
+        // meshPrefabObstacleRed.GetComponentInChildren<VisualEffect>().Play();
     }
 
     private void UpdateSkybox()

@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 344b72cb6a7052c46ad922e9a619f4fa, type: 2}
+  - {fileID: 2100000, guid: 6ca385b80becd404294d64df52904003, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,7 +143,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5493612244933227656}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 6eeb5a1d92195ad40b15f284dc35be5f, type: 2}
   m_CullingMode: 0
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 7272864420820145340}
   - component: {fileID: 5008100066252907129}
   m_Layer: 0
-  m_Name: Dimension_change_Bleu
+  m_Name: Dimension_change
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
