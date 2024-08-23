@@ -58,6 +58,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Vitesse_defilement: 0.1
+    - _alpha: 1
     m_Colors:
     - _Couleur: {r: 0, g: 19.027313, b: 17.396431, a: 0}
     - _Couleur_D1: {r: 0, g: 15.018974, b: 15.018974, a: 1}
