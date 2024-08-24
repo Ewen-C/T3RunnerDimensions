@@ -67,4 +67,12 @@ public class ActivityManager : MonoBehaviour
 
         return currentPositionZ;
     }
+
+    public void UpdateObtacles(DimensionManager.Dimension newDimension)
+    {
+        for (int i = 0; i < spawnedPatterns.Count; i++)
+        {
+            
+        }
+    }
 }

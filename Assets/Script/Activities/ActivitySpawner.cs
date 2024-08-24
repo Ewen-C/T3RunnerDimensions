@@ -43,7 +43,6 @@ public class ActivitySpawner : MonoBehaviour
         rdActivity.SetCooldown();
         
         // Todo? : cleanup activitySequence avec le historyCheck max trouvé
-        // activitySequence.Add(rdActivity.ActPublic);
         foreach (WeightedActivity weightedActivity in randomActivities) weightedActivity.DecreaseCooldown();
         numGeneratedPatterns++;
         

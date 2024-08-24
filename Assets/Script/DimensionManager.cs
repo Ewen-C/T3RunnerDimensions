@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -10,10 +11,9 @@ public class DimensionManager : MonoBehaviour
     [SerializeField] private MeshRenderer meshPrefabObstacleBlue;
     [SerializeField] private MeshRenderer meshPrefabObstacleRed;
     
-    [SerializeField] private Material materialObstaclesBlueSolid;
-    [SerializeField] private Material materialObstaclesBlueHolo;
-    [SerializeField] private Material materialObstaclesRedSolid;
-    [SerializeField] private Material materialObstaclesRedHolo;
+    // [SerializeField] private List<Animator> animsObstacles;
+    [SerializeField] private Animator testAnim;
+    [SerializeField] private float crossfadeDuration = 0.2f;
     
     [SerializeField] private Material skyboxBlue;
     [SerializeField] private Material skyboxRed;
@@ -47,19 +47,29 @@ public class DimensionManager : MonoBehaviour
 
     private void UpdateObtacles()
     {
+        Debug.Log(currentDimension);
+        
+        // if (currentDimension == Dimension.DimensionA)
+        // {
+        //     animPrefabObstacleBlue.Play("appear");
+        //     animPrefabObstacleRed.Play("dissolve");
+        // }
+        // else
+        // {
+        //     animPrefabObstacleBlue.Play("dissolve");
+        //     animPrefabObstacleRed.Play("appear");
+        // }
+        
+        testAnim.CrossFade("dissolve", crossfadeDuration);
+        
         if (currentDimension == Dimension.DimensionA)
         {
-            meshPrefabObstacleBlue.material = materialObstaclesBlueHolo;
-            meshPrefabObstacleRed.material = materialObstaclesRedSolid;
+            testAnim.CrossFade("dissolve", crossfadeDuration);
         }
         else
         {
-            meshPrefabObstacleBlue.material = materialObstaclesBlueSolid;
-            meshPrefabObstacleRed.material = materialObstaclesRedHolo;
+            testAnim.CrossFade("appear", crossfadeDuration);
         }
-
-        // meshPrefabObstacleBlue.GetComponentInChildren<VisualEffect>().Play();
-        // meshPrefabObstacleRed.GetComponentInChildren<VisualEffect>().Play();
     }
 
     private void UpdateSkybox()
