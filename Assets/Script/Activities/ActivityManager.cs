@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,12 +48,6 @@ public class ActivityManager : MonoBehaviour
         CreateAndRegisterActivity(); // Instancie un nouveau pattern
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
-    private void CreateAndRegisterActivity()
-    {
-        spawnedPatterns.Add(activitySpawner.SpawnActivity(GetSpawnPositionZ()));
-    }
-
     private float GetSpawnPositionZ()
     {
         float currentPositionZ = spawnedPatterns[0].transform.position.z -
@@ -68,11 +61,21 @@ public class ActivityManager : MonoBehaviour
         return currentPositionZ;
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void CreateAndRegisterActivity()
+    {
+        spawnedPatterns.Add(activitySpawner.SpawnActivity(GetSpawnPositionZ()));
+    }
+
     public void UpdateObtacles(DimensionManager.Dimension newDimension)
     {
         for (int i = 0; i < spawnedPatterns.Count; i++)
         {
-            
+            ObstacleSwitch[] obstacleSwitchs = spawnedPatterns[i].GetComponentsInChildren<ObstacleSwitch>();
+            for (int j = 0; j < obstacleSwitchs.Length; j++)
+            {
+                obstacleSwitchs[j].PlaySwitchAnimation(newDimension);
+            }
         }
     }
 }

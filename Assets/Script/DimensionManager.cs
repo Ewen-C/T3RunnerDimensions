@@ -11,10 +11,6 @@ public class DimensionManager : MonoBehaviour
     [SerializeField] private MeshRenderer meshPrefabObstacleBlue;
     [SerializeField] private MeshRenderer meshPrefabObstacleRed;
     
-    // [SerializeField] private List<Animator> animsObstacles;
-    [SerializeField] private Animator testAnim;
-    [SerializeField] private float crossfadeDuration = 0.2f;
-    
     [SerializeField] private Material skyboxBlue;
     [SerializeField] private Material skyboxRed;
     [SerializeField] private Material baseRoad;
@@ -24,6 +20,7 @@ public class DimensionManager : MonoBehaviour
     [SerializeField] private VisualEffect vfxVitesseRed;
 
     [SerializeField] private PlayerCharacter playerCharacter;
+    [SerializeField] private ActivityManager activityManager;
     
     // Start is called before the first frame update
     void Start()
@@ -40,36 +37,9 @@ public class DimensionManager : MonoBehaviour
     private void ApplyDimensionChanges()
     {
         playerCharacter.UpdateDimension(currentDimension);
-        UpdateObtacles();
+        activityManager.UpdateObtacles(currentDimension);
         UpdateSkybox();
         UpdateVfx();
-    }
-
-    private void UpdateObtacles()
-    {
-        Debug.Log(currentDimension);
-        
-        // if (currentDimension == Dimension.DimensionA)
-        // {
-        //     animPrefabObstacleBlue.Play("appear");
-        //     animPrefabObstacleRed.Play("dissolve");
-        // }
-        // else
-        // {
-        //     animPrefabObstacleBlue.Play("dissolve");
-        //     animPrefabObstacleRed.Play("appear");
-        // }
-        
-        testAnim.CrossFade("dissolve", crossfadeDuration);
-        
-        if (currentDimension == Dimension.DimensionA)
-        {
-            testAnim.CrossFade("dissolve", crossfadeDuration);
-        }
-        else
-        {
-            testAnim.CrossFade("appear", crossfadeDuration);
-        }
     }
 
     private void UpdateSkybox()

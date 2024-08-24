@@ -23,7 +23,7 @@ public class PlayerCharacter : MonoBehaviour
         
         if (other.CompareTag("ObstacleDimension") || other.CompareTag("ObstacleFixe"))
         {
-            Debug.Log("HIT " + other.tag);
+            // Debug.Log("HIT " + other.tag);
             PlayerManager.gameOver = true;
             GetComponentInParent<PlayerController>().UpdateGameOver(true);
         } 

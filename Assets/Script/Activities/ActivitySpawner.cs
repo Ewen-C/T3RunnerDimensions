@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
@@ -9,7 +8,6 @@ public class ActivitySpawner : MonoBehaviour
     [SerializeField] private int maxProgression = 50; // Avancement des types de patterns avec les courbes
     [SerializeField, ReadOnly] private int numGeneratedPatterns; // Utilisé pour la progression
     
-    // private List<Activity> activitySequence = new(); // Activités des patterns spawnés
     private List<GameObject> patternSequence = new(); // Prefabs des patterns spawnés
     
     [SerializeField] private List<Activity> firstActivities;
@@ -42,7 +40,7 @@ public class ActivitySpawner : MonoBehaviour
         WeightedActivity rdActivity = GetRdWeightedActivity(currentProgression);
         rdActivity.SetCooldown();
         
-        // Todo? : cleanup activitySequence avec le historyCheck max trouvé
+        // Todo? : cleanup patternSequence avec le historyCheck max trouvé
         foreach (WeightedActivity weightedActivity in randomActivities) weightedActivity.DecreaseCooldown();
         numGeneratedPatterns++;
         

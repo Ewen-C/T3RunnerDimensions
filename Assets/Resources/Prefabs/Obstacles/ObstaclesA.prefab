@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2528677061061613751}
   - component: {fileID: 6942799079772271486}
   - component: {fileID: 4257651569016345030}
+  - component: {fileID: 1953420099305980886}
   m_Layer: 10
   m_Name: ObstaclesA
   m_TagString: Obstacle
@@ -65,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ca385b80becd404294d64df52904003, type: 2}
+  - {fileID: 2100000, guid: 0a9b745540c060344a0d7c206055c77e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,6 +157,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1953420099305980886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5493612244933227656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 005c545282dd74f4bbf16d33b4a38a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crossfadeDuration: 0.2
 --- !u!1001 &3346816262412897144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238,7 +252,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a9c5a6383783aaa47a1c7e3cd04a9c00, type: 2}
+      objectReference: {fileID: 2100000, guid: 344b72cb6a7052c46ad922e9a619f4fa, type: 2}
     - target: {fileID: 919132149155446097, guid: 0709bf7fe56344a4ea177498fc3c3121,
         type: 3}
       propertyPath: m_Name
