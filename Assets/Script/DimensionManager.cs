@@ -22,22 +22,21 @@ public class DimensionManager : MonoBehaviour
     [SerializeField] private PlayerCharacter playerCharacter;
     [SerializeField] private ActivityManager activityManager;
     
-    // Start is called before the first frame update
     void Start()
     {
-        ApplyDimensionChanges();
+        ApplyDimensionChanges(); // S'adapte à la dimension de départ
     }
 
     public void SwitchDimension()
     {
         currentDimension = (currentDimension == Dimension.DimensionA) ? Dimension.DimensionB : Dimension.DimensionA;
         ApplyDimensionChanges();
+        activityManager.UpdateObtacles(currentDimension);
     }
 
     private void ApplyDimensionChanges()
     {
         playerCharacter.UpdateDimension(currentDimension);
-        activityManager.UpdateObtacles(currentDimension);
         UpdateSkybox();
         UpdateVfx();
     }
@@ -61,7 +60,7 @@ public class DimensionManager : MonoBehaviour
 
     private void UpdateVfx()
     {
-        vfxVitesseBlue.SetFloat("vitesse", currentDimension == Dimension.DimensionA ? vfxVitesseSpawnSpeed : 0);
-        vfxVitesseRed.SetFloat("vitesse", currentDimension == Dimension.DimensionB ? vfxVitesseSpawnSpeed : 0);
+        vfxVitesseBlue.enabled = currentDimension == Dimension.DimensionA;
+        vfxVitesseRed.enabled = currentDimension == Dimension.DimensionB;
     }
 }
