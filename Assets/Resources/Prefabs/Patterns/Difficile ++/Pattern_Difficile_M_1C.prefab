@@ -2646,6 +2646,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pattern_Difficile_M_1C
       objectReference: {fileID: 0}
+    - target: {fileID: 6979834325776874350, guid: 674e5529517d8464e833907b282c72e8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0073005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979834325776874350, guid: 674e5529517d8464e833907b282c72e8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979834325776874350, guid: 674e5529517d8464e833907b282c72e8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979834325776874350, guid: 674e5529517d8464e833907b282c72e8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2373609116897405480, guid: 674e5529517d8464e833907b282c72e8, type: 3}

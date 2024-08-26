@@ -1849,6 +1849,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a92a372ec47c1fb40b761c4610c7cf30, type: 2}
   - {fileID: 11400000, guid: a92a372ec47c1fb40b761c4610c7cf30, type: 2}
   - {fileID: 11400000, guid: 4aac63f068ad96242b9429653fd52cc0, type: 2}
+  - {fileID: 11400000, guid: 4aac63f068ad96242b9429653fd52cc0, type: 2}
+  - {fileID: 11400000, guid: a92a372ec47c1fb40b761c4610c7cf30, type: 2}
+  - {fileID: 11400000, guid: a92a372ec47c1fb40b761c4610c7cf30, type: 2}
   randomActivities:
   - activity: {fileID: 11400000, guid: f893076159c6c8b48a07cc872bc8fae7, type: 2}
     weight: 2
@@ -1993,7 +1996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29e6c5895e4269b4fbb5bbf75858077f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundMoveSpeed: 8.5
+  groundMoveSpeed: 8
   maxGrounds: 7
   patternRemovalDistance: 15
 --- !u!4 &1071841215
@@ -3757,9 +3760,9 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 547433139}
+  - {fileID: 663107295}
   - {fileID: 1071841215}
   - {fileID: 1971064020}
-  - {fileID: 663107295}
   - {fileID: 173281104}
   - {fileID: 1704150802}
   - {fileID: 1220148468}
