@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
 public class DimensionManager : MonoBehaviour
 {
-    // Dimension A -> blue, Dimension B -> Red / Pink
+    // Dimension A -> Blue / Cyan, Dimension B -> Red / Magenta
     public enum Dimension { DimensionA, DimensionB }
     private Dimension currentDimension = Dimension.DimensionA;
 
@@ -13,7 +12,12 @@ public class DimensionManager : MonoBehaviour
     
     [SerializeField] private Material skyboxBlue;
     [SerializeField] private Material skyboxRed;
-    [SerializeField] private Material baseRoad;
+    
+    [SerializeField] private Material neonMaterial;
+    [SerializeField] private Color neonColorBlue;
+    [SerializeField] private Color neonColorRed;
+    [SerializeField] private float neonIntensityFactor = 25f;
+    
 
     [SerializeField] private float vfxVitesseSpawnSpeed = 250;
     [SerializeField] private VisualEffect vfxVitesseBlue;
@@ -46,15 +50,16 @@ public class DimensionManager : MonoBehaviour
         if (currentDimension == Dimension.DimensionA)
         {
             RenderSettings.skybox = skyboxBlue;
-            baseRoad.SetColor("_EmissionColor", Color.blue);
             RenderSettings.fogColor = Color.cyan;
+            neonMaterial.SetColor("_EmissionColor", neonColorBlue * neonIntensityFactor);
+            
 
         }
         else
         {
             RenderSettings.skybox = skyboxRed;
-            baseRoad.SetColor("_EmissionColor", Color.red);
             RenderSettings.fogColor = Color.magenta;
+            neonMaterial.SetColor("_EmissionColor", neonColorRed * neonIntensityFactor);
         }
     }
 
