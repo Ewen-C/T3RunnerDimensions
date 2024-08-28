@@ -19,8 +19,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 140
     y: -662
-    width: 3046
-    height: 2798
+    width: 3047
+    height: 2825
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,7 +229,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 5
+      m_SerializableObject: 4
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -1706,7 +1706,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":25.0,"z":0.0},"size":{"x":50.0,"y":50.0,"z":1.0}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":50.0,"z":0.0},"size":{"x":100.0,"y":100.0,"z":1.0}}'
     m_Space: 0
   m_Property:
     name: Box

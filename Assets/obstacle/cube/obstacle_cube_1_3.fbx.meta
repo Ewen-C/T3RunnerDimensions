@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 41ecb473ce7984848b1d87df5b364b76
+guid: 869de6187c975914ab5932d64f537ab5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "n\xE9on"
-    second: {fileID: 2100000, guid: 38c8283f501dc484996700e567505d00, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: sol
-    second: {fileID: 2100000, guid: 481c0752cd8ef1240aa52b3257bfa007, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

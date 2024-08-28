@@ -30,7 +30,7 @@ Material:
     - _Couleur: {r: 32, g: 0, b: 25.496185, a: 0}
     - _Couleur_D2: {r: 0, g: 0, b: 0, a: 1}
     - _Couleur_principal: {r: 4, g: 4, b: 4, a: 0}
-    - _Tiling: {r: 1, g: 4, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 3, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &9134977662907176215
 MonoBehaviour:

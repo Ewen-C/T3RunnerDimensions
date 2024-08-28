@@ -41,6 +41,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 197412f1f1dc94749b0e27678588c6b8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Triplanar_2051a64552de4297974d7c9dd16bced4_Texture_1_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -64,5 +68,5 @@ Material:
     - _Couleur_D1: {r: 0, g: 15.018974, b: 15.018974, a: 1}
     - _Couleur_D2: {r: 0, g: 0, b: 0, a: 1}
     - _Couleur_principal: {r: 2.9960783, g: 2.9960783, b: 2.9960783, a: 0}
-    - _Tiling: {r: 1, g: 4, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 3, b: 0, a: 0}
   m_BuildTextureStacks: []
