@@ -35,6 +35,7 @@ public class DimensionManager : MonoBehaviour
         currentDimension = (currentDimension == Dimension.DimensionA) ? Dimension.DimensionB : Dimension.DimensionA;
         ApplyDimensionChanges();
         activityManager.UpdateObtacles(currentDimension);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.switchSound, transform.position);
     }
 
     private void ApplyDimensionChanges()

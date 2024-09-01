@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1953420099305980886}
   m_Layer: 10
   m_Name: ObstaclesA 1_1
-  m_TagString: Obstacle
+  m_TagString: ObstacleDimension
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

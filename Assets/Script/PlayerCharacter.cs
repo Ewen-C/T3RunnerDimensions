@@ -19,6 +19,8 @@ public class PlayerCharacter : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Collide (debugMode) " + debugMode + " : " + other.tag);
+        
         if (debugMode) return;
         
         if (other.CompareTag("ObstacleDimension") || other.CompareTag("ObstacleFixe"))
@@ -26,6 +28,7 @@ public class PlayerCharacter : MonoBehaviour
             // Debug.Log("HIT " + other.tag);
             PlayerManager.gameOver = true;
             GetComponentInParent<PlayerController>().UpdateGameOver(true);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.deathSound, transform.position);
         } 
     }
     

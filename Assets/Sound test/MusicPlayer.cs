@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FMOD.Studio;
 
-public class TestMusic : MonoBehaviour
+public class MusicPlayer : MonoBehaviour
 {
-    
     private EventInstance musicLoop;
-    public bool isMusicPlaying;
+    public bool isMusicPlaying = true;
 
     [SerializeField] [Range(0f, 1f)]
     private float hyperMod;
@@ -19,19 +16,16 @@ public class TestMusic : MonoBehaviour
 
     void Update()
     {
-        if (isMusicPlaying == true)
+        if (isMusicPlaying)
         {
-            PLAYBACK_STATE playbackState;
-            musicLoop.getPlaybackState(out playbackState);
-            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
-            {
-                musicLoop.start();
-            }
+            musicLoop.getPlaybackState(out var playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED)) musicLoop.start();
         }
         else
         {
             musicLoop.stop(STOP_MODE.IMMEDIATE);
         }
+        
         musicLoop.setParameterByName("Gauge", hyperMod);
     }
 }

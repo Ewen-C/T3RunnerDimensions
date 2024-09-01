@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
     public static bool gameOver;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private MusicPlayer musicPlayer;
+    
 
     void Start()
     {
@@ -17,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (gameOver)
         {
+            musicPlayer.isMusicPlaying = false;
             Time.timeScale = 0;
             gameOverPanel.SetActive(true);
         }
