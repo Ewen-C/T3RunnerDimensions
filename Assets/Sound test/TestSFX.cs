@@ -6,6 +6,6 @@ public class TestSFX : MonoBehaviour
 {
     void Start()
     {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.deathSound, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.collectSound, this.transform.position);
     }
 }

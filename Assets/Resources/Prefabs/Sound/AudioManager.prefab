@@ -124,3 +124,10 @@ MonoBehaviour:
       Data3: 1054971795
       Data4: 1373475367
     Path: event:/Select
+  <hypermodeSound>k__BackingField:
+    Guid:
+      Data1: 258255573
+      Data2: 1244397240
+      Data3: -1494617946
+      Data4: -1427008203
+    Path: event:/Hypermode

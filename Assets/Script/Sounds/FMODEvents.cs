@@ -13,6 +13,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference collectSound {get; private set;}
     [field: SerializeField] public EventReference switchSound {get; private set;}
     [field: SerializeField] public EventReference selectSound {get; private set;}
+    [field: SerializeField] public EventReference hypermodeSound {get; private set;}
 
     public static FMODEvents instance {get; private set;}
     // Start is called before the first frame update

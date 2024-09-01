@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{903bd09e-2ff9-463a-a776-9f66b90441c8}">
+	<object class="AudioFile" id="{c84211e9-b519-4767-8c3c-163e7bccae9e}">
 		<property name="assetPath">
-			<value>SFX/Hypermode.wav</value>
+			<value>SFX/Collect.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>1.6941496598639456</value>
+			<value>0.44886621315192743</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{5dcd3625-0b16-4cb6-b42d-5ab3e6b7f743}</destination>
