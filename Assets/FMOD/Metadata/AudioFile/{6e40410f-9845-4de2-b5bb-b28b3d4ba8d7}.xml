@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{6e40410f-9845-4de2-b5bb-b28b3d4ba8d7}">
+		<property name="assetPath">
+			<value>Music/46996__djpuckman__analogjockeys-drumloop125bpm.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.8399999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5dcd3625-0b16-4cb6-b42d-5ab3e6b7f743}</destination>
+		</relationship>
+	</object>
+</objects>

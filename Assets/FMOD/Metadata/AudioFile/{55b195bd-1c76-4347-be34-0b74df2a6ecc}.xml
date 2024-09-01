@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{55b195bd-1c76-4347-be34-0b74df2a6ecc}">
+		<property name="assetPath">
+			<value>Unused/Kick.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.8419501133786849</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5dcd3625-0b16-4cb6-b42d-5ab3e6b7f743}</destination>
+		</relationship>
+	</object>
+</objects>

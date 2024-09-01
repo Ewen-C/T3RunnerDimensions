@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f0c29f96-f7ee-4316-8735-b341b6eafba2}">
+		<property name="assetPath">
+			<value>Unused/ATSMXN, XTOM - Enemies [NCS Release].mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>114.07673469387755</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5dcd3625-0b16-4cb6-b42d-5ab3e6b7f743}</destination>
+		</relationship>
+	</object>
+</objects>

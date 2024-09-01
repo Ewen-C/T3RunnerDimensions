@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{f52c3bc0-76fb-4a46-9a88-9acd56393c59}">
+		<property name="name">
+			<value>Dimension switch</value>
+		</property>
+		<relationship name="folder">
+			<destination>{cb7d0705-03ad-4ab2-9ab6-28ede0d2af6b}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1a9f7562-873a-43f8-af7a-a596a7b30e3d}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1a9f7562-873a-43f8-af7a-a596a7b30e3d}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
