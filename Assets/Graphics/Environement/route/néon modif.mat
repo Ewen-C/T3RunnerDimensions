@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: "n\xE9on modif"
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: -6500511600253669579, guid: 8a015b50a09879f4e82ae5b2f885de72,
+  m_Parent: {fileID: -6500511600253669579, guid: fe7a1a8a76441924f93d60544af46bcb,
     type: 3}
   m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
@@ -29,8 +29,8 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.6862745, g: 4.901961, b: 18.72549, a: 0}
+    - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
+    - _EmissionColor: {r: 12.994176, g: 0.5606981, b: 16.981133, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8512783711718742051
 MonoBehaviour:
