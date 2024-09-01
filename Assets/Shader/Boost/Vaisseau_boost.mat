@@ -46,16 +46,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Cutoff_Height: 14.58
+    - _Cutoff_Height: -5.71
     - _Edge_Width: 0.64
     - _Noise_Scale: 20
     - _Noise_Strenght: 17.48
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 2.5759158, g: 3.958594, b: 3.9999995, a: 0}
-    - _Color_Dissolve: {r: 3.063437, g: 32, b: 0.31999972, a: 1}
-    - _Intensit_bords: {r: 0.524, g: 0.524, b: 0.524, a: 0}
+    - _Color: {r: 8.941176, g: 3.294118, b: 7.5294123, a: 0}
+    - _Color_Dissolve: {r: 39.068523, g: 60.4564, b: 47.37781, a: 1}
+    - _Intensit_bords: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &298996937358310172
 MonoBehaviour:

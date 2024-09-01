@@ -17,7 +17,6 @@ public class DimensionManager : MonoBehaviour
     [SerializeField] private Color neonColorBlue;
     [SerializeField] private Color neonColorRed;
     [SerializeField] private float neonIntensityFactor = 25f;
-    
 
     [SerializeField] private VisualEffect vfxVitesseBlue;
     [SerializeField] private VisualEffect vfxVitesseRed;
@@ -34,6 +33,7 @@ public class DimensionManager : MonoBehaviour
     {
         currentDimension = (currentDimension == Dimension.DimensionA) ? Dimension.DimensionB : Dimension.DimensionA;
         ApplyDimensionChanges();
+        
         activityManager.UpdateObtacles(currentDimension);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.switchSound, transform.position);
     }
