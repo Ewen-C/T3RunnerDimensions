@@ -19,7 +19,6 @@ public class DimensionManager : MonoBehaviour
     [SerializeField] private float neonIntensityFactor = 25f;
     
 
-    [SerializeField] private float vfxVitesseSpawnSpeed = 250;
     [SerializeField] private VisualEffect vfxVitesseBlue;
     [SerializeField] private VisualEffect vfxVitesseRed;
 
