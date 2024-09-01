@@ -1,69 +1,41 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    private int collisionCount; // Compteur de collisions
-    
-    public Text hitText;
-    public GameObject feedbackPrefab;
-    public float displayTime = 0.2f;
-    
-    public int dimensionALayer;
-    public int dimensionBLayer;
+    [SerializeField] private int dimensionALayer;
+    [SerializeField] private int dimensionBLayer;
+    [SerializeField] private Material materialPlayerA;
+    [SerializeField] private Material materialPlayerB;
 
-    [SerializeField] private Material materialDimensionA;
-    [SerializeField] private Material materialDimensionB;
-    [SerializeField] private Material materialObstaclesA;
-    [SerializeField] private Material materialObstaclesB;
-    
-    public enum Dimension { DimensionA, DimensionB }
-    public Dimension currentDimension = Dimension.DimensionA;
-    
+    [SerializeField] private bool debugMode;
+
+    private new Renderer renderer;
+
     void Start()
     {
-        // Initialisation pour s assurer que l état initial est correct
-        UpdateMaterialTransparency();
-    }
-    
-    void Update()
-    {
-        hitText.text = "Hit : " + collisionCount; // Met à jour le texte affiché
+        renderer = GetComponent<Renderer>();
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Obstacle")) return;
+        if (debugMode) return;
         
-        collisionCount++; // Incrémenter le compteur de collisions
-        var position = transform.position;
-        GameObject feedbackInstance = Instantiate(feedbackPrefab, new Vector3(position.x, 
-            position.y + 1, position.z), Quaternion.identity);
-        //Debug.Log("Collision detected! Total hits: " + collisionCount);
-        Destroy(feedbackInstance, displayTime);
+        if (other.CompareTag("ObstacleDimension") || other.CompareTag("ObstacleFixe"))
+        {
+            // Debug.Log("HIT " + other.tag);
+            PlayerManager.gameOver = true;
+            GetComponentInParent<PlayerController>().UpdateGameOver(true);
+        } 
     }
     
-    public void SwitchDimension()
+    public void UpdateDimension(DimensionManager.Dimension newDimension)
     {
-        currentDimension = (currentDimension == Dimension.DimensionA) ? Dimension.DimensionB : Dimension.DimensionA;
-        gameObject.layer = (currentDimension == Dimension.DimensionA) ? dimensionALayer : dimensionBLayer;
-        GetComponent<Renderer>().material = 
-            (currentDimension == Dimension.DimensionA) ? materialDimensionA : materialDimensionB;
+        gameObject.layer = (newDimension == DimensionManager.Dimension.DimensionA) ? dimensionALayer : dimensionBLayer;
         
-        UpdateMaterialTransparency();
-        
-        Debug.Log("Switched to Dimension" + (currentDimension == Dimension.DimensionA ? "A" : " B"));
-    }
-    
-    private void UpdateMaterialTransparency()
-    {
-        Color currentColorA = materialObstaclesA.GetColor(Shader.PropertyToID("_BaseColor"));
-        Color currentColorB = materialObstaclesB.GetColor(Shader.PropertyToID("_BaseColor"));
+        if(!renderer) renderer = GetComponent<Renderer>();
+        renderer.material = (newDimension == DimensionManager.Dimension.DimensionA) ? materialPlayerA : materialPlayerB;
 
-        currentColorA.a = currentDimension == Dimension.DimensionA ? 0.8f : 0.1f;
-        currentColorB.a = currentDimension == Dimension.DimensionB ? 0.8f : 0.1f;
-        
-        materialObstaclesA.SetColor(Shader.PropertyToID("_BaseColor"), currentColorA);
-        materialObstaclesB.SetColor(Shader.PropertyToID("_BaseColor"), currentColorB);
+        // Debug.Log("Switched to Dimension" + (currentDimension == Dimension.DimensionA ? "A" : " B"));
     }
 }

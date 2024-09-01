@@ -1,62 +1,55 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public float groundMoveSpeed = 10f; // La vitesse de défilement des patterns
-    public int maxGrounds = 7; // Nombre de pattern à maintenir à l écran
-
-    [SerializeField] private ObstacleSpawner obstacleSpawner;
-
-    private Transform player; // La référence au joueur
-    private readonly List<GameObject> patterns = new(); // Liste des patterns actuellement affichés
+    public static GameManager Instance { get; private set; }
+    
+    [SerializeField] private Text scoreText;
+    [SerializeField] private float scoreToAdd;
+    [SerializeField] private float secondForScore;
+    
+    
+    private float score = 0;
+    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform; // Trouver le joueur par tag
-        obstacleSpawner = GetComponent<ObstacleSpawner>();
-
-        // Instancier les premiers sols
-        patterns.Add(obstacleSpawner.SpawnPatternStart(GetSpawnPosition()));
-        patterns.Add(obstacleSpawner.SpawnPatternStart(GetSpawnPosition()));
-        patterns.Add(obstacleSpawner.SpawnPatternTuto(GetSpawnPosition()));
-        
-        for (int i = patterns.Count; i < maxGrounds; i++)
-        {
-            CreateAndRegisterPattern();
-        }
-    }
-
-    private void Update()
-    {
-        // Déplacer tous les sols vers le joueur
-        foreach (GameObject pattern in patterns)
-        {
-            pattern.transform.position += Vector3.back * (groundMoveSpeed * Time.deltaTime);
-        }
-
-        RemovePreviousPattern();
+        StartCoroutine(IncrementScoreEverySecond());
     }
     
-    private void RemovePreviousPattern()
+    private IEnumerator IncrementScoreEverySecond()
     {
-        // Si le premier pattern est derrière le joueur, le détruire 
-        if (patterns.Count <= 0 || !(patterns[0].transform.position.z < (player.position.z - 30f))) return;
-        Destroy(patterns[0]);
-        patterns.RemoveAt(0);
-        CreateAndRegisterPattern(); // Instancier un nouveau pattern
-    }
+        while (true)
+        {
+            yield return new WaitForSeconds(secondForScore/scoreToAdd);
+            float pointsToAdd = 1;
 
-    // ReSharper disable Unity.PerformanceAnalysis
-    private void CreateAndRegisterPattern()
-    {
-        patterns.Add(obstacleSpawner.SpawnPattern(GetSpawnPosition()));
+            // Double le score si la jauge est en phase jaune
+            if (GaugeManager.Instance.IsYellowPhase)
+            {
+                pointsToAdd *= 2;
+            }
+            
+            score += pointsToAdd;
+            UpdateScoreText();
+        }
     }
-
-    private Vector3 GetSpawnPosition()
+    
+    private void UpdateScoreText()
     {
-        // TODO : Calcul dynamique de la position des sols à la place de -35
-        var position = player.position;
-        return new Vector3(0, position.y, position.z) - new Vector3(0, 0.15f, -35f * patterns.Count);
+        scoreText.text = $"{Mathf.RoundToInt(score)}"; // Utilisation de Mathf.RoundToInt pour éviter les décimales
     }
 }

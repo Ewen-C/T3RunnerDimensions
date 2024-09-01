@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - ObstacleDimension
+  - ObstacleFixe
   - Obstacle
   layers:
   - Default
@@ -12,13 +14,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Camera
+  - frgerhg
   - 
   - 
   - DimensionA
   - DimensionB
-  - 
+  - Light
   - 
   - 
   - 

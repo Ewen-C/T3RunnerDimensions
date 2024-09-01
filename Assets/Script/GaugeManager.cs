@@ -7,9 +7,9 @@ public class GaugeManager : MonoBehaviour
     public Slider gaugeSlider;
     public Image gaugeFillImage;
     
-    public int pointsPerCollectableWhite = 3;
-    public int pointsPerCollectableYellow = 2;
-    public float decreaseRateYellow = 12f;
+    public int pointsPerCollectableWhite = 7;
+    public int pointsPerCollectableYellow = 5;
+    public float decreaseRateYellow = 9f;
     
     private const int maxWhitePoints = 99;
     private bool isYellowPhase = false;
@@ -24,7 +24,7 @@ public class GaugeManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {

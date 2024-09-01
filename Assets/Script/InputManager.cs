@@ -10,8 +10,9 @@ public class InputManager : MonoBehaviour
     public delegate void DimensionChangeHandler();
     public event DimensionChangeHandler OnDimensionChange;
     
-    public Image leftControlArea;
-    public Image rightControlArea;
+    [SerializeField] private Image leftControlArea;
+    [SerializeField] private Image rightControlArea;
+    [SerializeField] private Image changeDimControlArea;
     
     private float moveDirection; // 0 = pas de mouvement, 1 = droite, -1 = gauche
     
@@ -19,14 +20,12 @@ public class InputManager : MonoBehaviour
     {
         LeanTouch.OnFingerDown += HandleFingerDown;
         LeanTouch.OnFingerUp += HandleFingerUp;
-        LeanTouch.OnFingerSwipe += HandleFingerSwipe;
     }
 
     protected virtual void OnDisable()
     {
         LeanTouch.OnFingerDown -= HandleFingerDown;
         LeanTouch.OnFingerUp -= HandleFingerUp;
-        LeanTouch.OnFingerSwipe -= HandleFingerSwipe;
     }
 
     private void HandleFingerDown(LeanFinger finger)
@@ -41,6 +40,10 @@ public class InputManager : MonoBehaviour
         {
             moveDirection = 1f; // Déplacer à droite
         }
+        else if (IsPointerOverUIObject(changeDimControlArea, touchPosition))
+        {
+            OnDimensionChange?.Invoke();
+        }
         
         OnMoveDirectionChanged?.Invoke(moveDirection);
     }
@@ -49,15 +52,6 @@ public class InputManager : MonoBehaviour
     {
         moveDirection = 0f;
         OnMoveDirectionChanged?.Invoke(moveDirection);
-    }
-    
-    private void HandleFingerSwipe(LeanFinger finger)
-    {
-        // Detect vertical swipe up
-        if (finger.SwipeScreenDelta.y > Mathf.Abs(finger.SwipeScreenDelta.x) && finger.SwipeScreenDelta.y > 50)
-        {
-            OnDimensionChange?.Invoke();
-        }
     }
     
     private bool IsPointerOverUIObject(Image img, Vector2 screenPosition)
