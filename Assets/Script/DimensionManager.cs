@@ -15,7 +15,6 @@ public class DimensionManager : MonoBehaviour
     [SerializeField] private Material skyboxRed;
     [SerializeField] private Material baseRoad;
 
-    [SerializeField] private float vfxVitesseSpawnSpeed = 250;
     [SerializeField] private VisualEffect vfxVitesseBlue;
     [SerializeField] private VisualEffect vfxVitesseRed;
 
