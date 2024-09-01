@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{3741b0a1-53f3-477a-83a4-acfc84c1579d}">
+		<property name="name">
+			<value>Gauge</value>
+		</property>
+		<relationship name="folder">
+			<destination>{cb7d0705-03ad-4ab2-9ab6-28ede0d2af6b}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{9ec5f69d-fdc6-474b-864f-160695d897a6}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{9ec5f69d-fdc6-474b-864f-160695d897a6}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
