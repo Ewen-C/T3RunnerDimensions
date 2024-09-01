@@ -8,7 +8,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private MusicPlayer musicPlayer;
     
-
     void Start()
     {
         gameOver = false;

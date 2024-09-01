@@ -942,6 +942,21 @@ PrefabInstance:
       propertyPath: inputManager
       value: 
       objectReference: {fileID: 1704150800}
+    - target: {fileID: 4468122901506456832, guid: a13055eb8cc5d5b459628f1bfb5f302b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735519461120819680, guid: a13055eb8cc5d5b459628f1bfb5f302b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536708417034248245, guid: a13055eb8cc5d5b459628f1bfb5f302b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7695392482120996106, guid: a13055eb8cc5d5b459628f1bfb5f302b,
         type: 3}
       propertyPath: m_Name
@@ -2075,6 +2090,7 @@ MonoBehaviour:
   pointsPerCollectableWhite: 7
   pointsPerCollectableYellow: 5
   decreaseRateYellow: 9
+  musicPlayer: {fileID: 780399911}
 --- !u!4 &1220148468
 Transform:
   m_ObjectHideFlags: 0

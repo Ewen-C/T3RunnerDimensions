@@ -53,7 +53,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 2.8603976, g: 3.9999995, b: 2.5679998, a: 0}
+    - _Color: {r: 2.5759158, g: 3.958594, b: 3.9999995, a: 0}
     - _Color_Dissolve: {r: 3.063437, g: 32, b: 0.31999972, a: 1}
     - _Intensit_bords: {r: 0.524, g: 0.524, b: 0.524, a: 0}
   m_BuildTextureStacks: []

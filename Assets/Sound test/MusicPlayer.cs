@@ -28,4 +28,9 @@ public class MusicPlayer : MonoBehaviour
         
         musicLoop.setParameterByName("Gauge", hyperMod);
     }
+
+    public void SwitchHyperMode(bool newHyperMode)
+    {
+        hyperMod = newHyperMode ? 1f : hyperMod = 0f;
+    }
 }

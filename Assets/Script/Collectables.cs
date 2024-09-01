@@ -12,6 +12,7 @@ public class Collectables : MonoBehaviour
         
         int pointsToAdd = GaugeManager.Instance.IsYellowPhase ? 
             GaugeManager.Instance.pointsPerCollectableYellow : GaugeManager.Instance.pointsPerCollectableWhite;
+        
         GaugeManager.Instance.AddPoints(pointsToAdd);
         //Debug.Log("Points add : " + pointsToAdd);
         
