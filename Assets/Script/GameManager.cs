@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float scoreToAdd;
     [SerializeField] private float secondForScore;
     
-    
     private float score = 0;
     
     private void Awake()
@@ -51,5 +50,10 @@ public class GameManager : MonoBehaviour
     private void UpdateScoreText()
     {
         scoreText.text = $"{Mathf.RoundToInt(score)}"; // Utilisation de Mathf.RoundToInt pour éviter les décimales
+    }
+
+    public float GetScore()
+    {
+        return score;
     }
 }
