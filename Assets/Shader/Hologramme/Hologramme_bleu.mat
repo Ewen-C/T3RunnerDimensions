@@ -61,12 +61,12 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Vitesse_defilement: 0.1
+    - _Vitesse_defilement: 4
     - _alpha: 1
     m_Colors:
-    - _Couleur: {r: 0, g: 19.027313, b: 17.396431, a: 0}
+    - _Couleur: {r: 0, g: 33.89676, b: 30.991377, a: 0}
     - _Couleur_D1: {r: 0, g: 15.018974, b: 15.018974, a: 1}
     - _Couleur_D2: {r: 0, g: 0, b: 0, a: 1}
     - _Couleur_principal: {r: 2.9960783, g: 2.9960783, b: 2.9960783, a: 0}
-    - _Tiling: {r: 1, g: 3, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 2, b: 0, a: 0}
   m_BuildTextureStacks: []
