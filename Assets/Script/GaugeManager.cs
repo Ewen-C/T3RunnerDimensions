@@ -17,6 +17,10 @@ public class GaugeManager : MonoBehaviour
     private Color whitePhaseColor = Color.white;
     private Color yellowPhaseColor = Color.yellow;
     
+    [SerializeField] private MusicPlayer musicPlayer;
+    [SerializeField] private PlayerCharacter playerCharacter;
+    
+    
     public bool IsYellowPhase => isYellowPhase;
 
     private void Awake()
@@ -71,6 +75,9 @@ public class GaugeManager : MonoBehaviour
     {
         isYellowPhase = true;
         gaugeFillImage.color = yellowPhaseColor;
+        
+        musicPlayer.SwitchHyperMode(true);
+        playerCharacter.PlayBoostAnimations(true);
     }
 
     private void SwitchToWhitePhase()
@@ -78,5 +85,8 @@ public class GaugeManager : MonoBehaviour
         isYellowPhase = false;
         gaugeSlider.value = 0;
         gaugeFillImage.color = whitePhaseColor;
+        
+        musicPlayer.SwitchHyperMode(false);
+        playerCharacter.PlayBoostAnimations(false);
     }
 }

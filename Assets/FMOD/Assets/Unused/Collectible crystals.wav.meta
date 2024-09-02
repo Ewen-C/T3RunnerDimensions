@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 9ed2f0c3abf4c7b4c987819c5496e424
+<<<<<<<< HEAD:Assets/FMOD/Assets/SFX/Collect.wav.meta
+guid: a1e151d26258c7d48ab278de081f45fb
+========
+guid: c46a926e60a97c54f80d8d213aef0bac
+>>>>>>>> integrations_boost_&_sfx:Assets/FMOD/Assets/Unused/Collectible crystals.wav.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 7

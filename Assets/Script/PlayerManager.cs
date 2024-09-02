@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private Text scoreFinalText;
     [SerializeField] private Text highScoreText;
-
+    [SerializeField] private MusicPlayer musicPlayer;
     void Start()
     {
         gameOver = false;
@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (gameOver)
         {
+            musicPlayer.isMusicPlaying = false;
             Time.timeScale = 0;
             finalScore = GameManager.Instance.GetScore();
             scoreFinalText.text = $"Votre score: {Mathf.RoundToInt(finalScore)}";

@@ -5,7 +5,7 @@ public class DimensionManager : MonoBehaviour
 {
     // Dimension A -> Blue / Cyan, Dimension B -> Red / Magenta
     public enum Dimension { DimensionA, DimensionB }
-    private Dimension currentDimension = Dimension.DimensionA;
+    private static Dimension currentDimension = Dimension.DimensionA;
 
     [SerializeField] private MeshRenderer meshPrefabObstacleBlue;
     [SerializeField] private MeshRenderer meshPrefabObstacleRed;
@@ -17,7 +17,6 @@ public class DimensionManager : MonoBehaviour
     [SerializeField] private Color neonColorBlue;
     [SerializeField] private Color neonColorRed;
     [SerializeField] private float neonIntensityFactor = 25f;
-    
 
     [SerializeField] private VisualEffect vfxVitesseBlue;
     [SerializeField] private VisualEffect vfxVitesseRed;
@@ -34,7 +33,9 @@ public class DimensionManager : MonoBehaviour
     {
         currentDimension = (currentDimension == Dimension.DimensionA) ? Dimension.DimensionB : Dimension.DimensionA;
         ApplyDimensionChanges();
+        
         activityManager.UpdateObtacles(currentDimension);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.switchSound, transform.position);
     }
 
     private void ApplyDimensionChanges()
@@ -66,5 +67,10 @@ public class DimensionManager : MonoBehaviour
     {
         vfxVitesseBlue.enabled = currentDimension == Dimension.DimensionA;
         vfxVitesseRed.enabled = currentDimension == Dimension.DimensionB;
+    }
+
+    public static Dimension GetCurrentDimension()
+    {
+        return currentDimension;
     }
 }
