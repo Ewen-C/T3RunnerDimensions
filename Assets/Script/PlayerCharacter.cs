@@ -25,7 +25,7 @@ public class PlayerCharacter : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (debugMode) return;
-        // Debug.Log("Collide (debugMode) " + debugMode + " : " + other.tag);
+        Debug.Log("Collide (debugMode) " + debugMode + " : " + other.tag);
 
         if (other.CompareTag("ObstacleDimension") || other.CompareTag("ObstacleFixe"))
         {
