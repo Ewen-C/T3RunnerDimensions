@@ -12,6 +12,7 @@ public class VolumeSliders : MonoBehaviour
 
     private void Awake() 
     {
+        DontDestroyOnLoad(gameObject);
         volumeSlider = this.GetComponentInChildren<Slider>();
     }
 
