@@ -1,9 +1,12 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ActivityManager : MonoBehaviour
 {
-    public float groundMoveSpeed = 10f; // La vitesse de défilement des patterns
+    public float groundMoveSpeed = 8.5f; // La vitesse de défilement des patterns
+    public float maxGroundMoveSpeed = 9.5f;
+    
     public int maxGrounds = 7; // Nombre de patterns à maintenir à l'écran
     private float playerPositionZ; // La référence au joueur
     public float patternRemovalDistance = 15f; // Distance du joueur où les patterns sont détruits
@@ -25,6 +28,8 @@ public class ActivityManager : MonoBehaviour
         {
             CreateAndRegisterActivity();
         }
+
+        StartCoroutine(IncreaseSpeed());
     }
 
     private void Update() // FixedUpdate ?
@@ -76,6 +81,15 @@ public class ActivityManager : MonoBehaviour
             {
                 obstacleSwitchs[j].PlaySwitchAnimation(newDimension);
             }
+        }
+    }
+    
+    private IEnumerator IncreaseSpeed()
+    {
+        while (true)
+        {
+            if(groundMoveSpeed < maxGroundMoveSpeed) yield return new WaitForSeconds(0.82f);
+            groundMoveSpeed += 0.01f;
         }
     }
 }
