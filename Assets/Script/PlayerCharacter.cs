@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
@@ -55,7 +54,6 @@ public class PlayerCharacter : MonoBehaviour
 
     public void PlayBoostAnimations(bool isAppearing)
     {
-        Debug.Log(isAppearing);
         animatorMesh.CrossFade(isAppearing ? "up" : "down", crossfadeDuration);
         animatorOutline.CrossFade(isAppearing ? "up_effect" : "down_effect", crossfadeDuration);
     }

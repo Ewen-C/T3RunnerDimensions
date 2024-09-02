@@ -57,7 +57,12 @@ public class ActivitySpawner : MonoBehaviour
         
         float newActivityZSize = newActivityPrefab.GetComponentInChildren<MeshRenderer>().transform.localScale.z;
         Vector3 newActivityPos = patternPositionZ + new Vector3(0, 0, newActivityZSize/2);
-        return Instantiate(newActivityPrefab, newActivityPos, Quaternion.identity);
+        GameObject newPattern = Instantiate(newActivityPrefab, newActivityPos, Quaternion.identity);
+
+        foreach (ObstacleSwitch obstacleSwitch in newPattern.GetComponentsInChildren<ObstacleSwitch>())
+            obstacleSwitch.PlaySwitchAnimation(DimensionManager.GetCurrentDimension());
+        
+        return newPattern;
     }
 
     // Gets randomly the activity using the weighted ratio - any weight values may be used
