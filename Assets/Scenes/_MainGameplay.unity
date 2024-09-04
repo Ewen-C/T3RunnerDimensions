@@ -1834,6 +1834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundMoveSpeed: 8.5
+  maxGroundMoveSpeed: 9.5
   maxGrounds: 8
   patternRemovalDistance: 15
 --- !u!4 &1071841215
@@ -2236,7 +2237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gaugeSlider: {fileID: 806385597}
   gaugeFillImage: {fileID: 40287266}
-  pointsPerCollectableWhite: 77
+  pointsPerCollectableWhite: 8
   pointsPerCollectableYellow: 5
   decreaseRateYellow: 9
   musicPlayer: {fileID: 780399911}
